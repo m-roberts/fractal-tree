@@ -1,30 +1,32 @@
 var context;
 var elem;
+var seedPoints;
 
 /////////////////////
 // START VARIABLES //
 /////////////////////
-/// MOVE THESE INTO AN OBJECT, FOREACH THEM IN TEXT DISPLAY
-var seedPoints = {
-	// Sets position on screen to start drawing tree
-	tree: {
-		// Start in the middle of the screen
-		x: window.innerWidth/2,
-		y: window.innerHeight/2
-	},
-	// Sets position on screen to display text from
-	text: {
-		x: 10,
-		y: 10,
-		offset: 15
+function setSeedPoints() {
+	seedPoints = {
+		// Sets position on screen to start drawing tree
+		tree: {
+			// Start in the middle of the screen
+			x: window.innerWidth/2,
+			y: window.innerHeight/2
+		},
+		// Sets position on screen to display text from
+		text: {
+			x: 10,
+			y: 20,
+			offset: 15
+		}
 	}
 }
 
 var colours = {
 	// Background colour (white)
-	background: "#FFFFFF",
+	background: "#000000",
 	// Tree colour (black)
-	tree: "#000000",
+	tree: "#FFFFFF",
 	// Text colour (red)
 	text: "#FF0000"
 }
@@ -51,7 +53,6 @@ var scalingFactor = 100*design.depth/Math.pow(Math.sqrt(design.depth), 3);
 var degToRad = Math.PI / 180.0;
 
 function setCanvasSize() {
-	elem = document.getElementById('fractalTree');
 	// Set size of canvas to screen
 	elem.width  = $(window).width();
 	elem.height = $(window).height();
@@ -116,10 +117,14 @@ function updateCanvas(){
 
 $(window).resize(function() {
 	setCanvasSize();
+	setSeedPoints()
+	updateCanvas();
 });
 
 $( document ).ready(function() {
+	elem = document.getElementById('fractalTree');
 	setCanvasSize();
+	setSeedPoints()
 	context = elem.getContext('2d');
 	// Line thickness
 	// Can this be made a function of the generation currently being drawn?
