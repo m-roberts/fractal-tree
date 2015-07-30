@@ -22,13 +22,12 @@ v0.1.0
   - Fails whenever canvas size is changed
 
 ### TODO
-  - Fix canvas resize function
-  - Render canvas to full size of HTML body
   - Separate functions and default variable values by file; give JS files better names
   - Improve variable display, iterate over variable objects
-  - Adjust line width and branch length according to generation of line drawn
+  - Adjust line width, branch length, colour, etc. according to generation of line drawn
   - Establish computational limits to prevent variables from being too large as to break
   - Add JQuery inputs to change variables in real-time without page reload
+  - Add option to see each drawing step that the program takes in oder
   - Get better scaling function which automatically adjusts to fit page no matter what the fractal tree design
   - Provide better commenting
   - Real-time Javascript function editing (if possible)
