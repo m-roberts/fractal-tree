@@ -1,8 +1,5 @@
-var elem = document.getElementById('fractalTree');
-// Set size of canvas to screen
-elem.width  = $(window).width();
-elem.height = $(window).height();
-var context = elem.getContext('2d');
+var context;
+var elem;
 
 /////////////////////
 // START VARIABLES //
@@ -32,10 +29,6 @@ var colours = {
 	text: "#FF0000"
 }
 
-// Line thickness
-// Can this be made a function of the generation currently being drawn?
-context.lineWidth = 1;
-
 var design = {
 	// Number of iterations
 	depth: 9,
@@ -46,6 +39,8 @@ var design = {
 	// Starting position (+/-0 = top, +90/-270 = right, +/-180 = down, +270/-90 = left)
 	startingAngle: 0
 }
+
+var lineWidth = 1;
 ///////////////////
 // END VARIABLES //
 ///////////////////
@@ -54,6 +49,13 @@ var design = {
 var scalingFactor = 100*design.depth/Math.pow(Math.sqrt(design.depth), 3);
 // Constant
 var degToRad = Math.PI / 180.0;
+
+function setCanvasSize() {
+	elem = document.getElementById('fractalTree');
+	// Set size of canvas to screen
+	elem.width  = $(window).width();
+	elem.height = $(window).height();
+}
 
 // FUNCTIONS
 function drawLine(x1, y1, x2, y2){
@@ -112,4 +114,16 @@ function updateCanvas(){
 	writeSettings();
 }
 
-updateCanvas();
+$(window).resize(function() {
+	setCanvasSize();
+});
+
+$( document ).ready(function() {
+	setCanvasSize();
+	context = elem.getContext('2d');
+	// Line thickness
+	// Can this be made a function of the generation currently being drawn?
+	context.lineWidth = lineWidth;
+
+	updateCanvas();
+});
