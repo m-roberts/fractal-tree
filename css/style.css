@@ -3,3 +3,24 @@ html, body {
   height: 100%;
   margin: 0px;
 }
+
+#slider-R{
+ margin-left: 20px;
+ margin-right: 20px;
+ top: 100px;
+ float:left; 
+}
+
+#slider-G{
+ margin-left: 20px;
+ margin-right: 20px;
+ top: 100px;
+ float:left;
+}
+
+#slider-B{
+ margin-left: 20px;
+ margin-right: 20px;
+ top: 100px;
+ float:left; 
+}
