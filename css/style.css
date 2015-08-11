@@ -1,5 +1,18 @@
 html, body {
-  width:  100%;
-  height: 100%;
-  margin: 0px;
+	width:  100%;
+	height: 100%;
+	margin: 0px;
+}
+
+/* Hides text inputs which are bound to slider values */
+input {
+	display:none;
+}
+
+/* Tree colour slider positions */
+#slider-R, #slider-G, #slider-B {
+	margin-left: 20px;
+	margin-right: 20px;
+	top: 150px;
+	float:left;
 }
