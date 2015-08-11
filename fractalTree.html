@@ -16,20 +16,32 @@
 	<body>
 			<p id="body"></p>
 			<canvas id="fractalTree" style="position: absolute;"></canvas>
-			<button type="button" class="btn btn-primary" style="position: absolute; z-index: 1; right:0px;">Draw</button>
+			<!-- <button type="button" class="btn btn-primary" style="right:0px;">Draw</button> -->
 			
+			<div id="settings">
+				<p style="margin-top:10px;">Iterations: <span id="depth"></span></p>
+				<p style="margin-top:30px;">Number of trees: <span id="noOfTrees"></span></p>
+				<p style="margin-top:50px;">Fork rotation from each root: <span id="rotationPerIteration"></span></p>
+				<p style="margin-top:70px;">Starting rotation from upright: <span id="startingAngle"></span></p>
+				<p style="margin-top:90px;">Tree colour: <span id="colourTree"></span></p>
+				<p style="margin-top:110px;">Background colour: <span id="colourBackground"></span></p>
+			</div>
+
 			<!-- http://jqueryui.com/slider/#colorpicker -->
-			<p>
-				<input type="text" id="tree-color-R"/>
-				<input type="text" id="tree-color-G"/>
-				<input type="text" id="tree-color-B"/>
-			</p>
+			<div>
+				<p style="color:white;margin-left:10px;margin-top:150px;">Tree colour (<span style="color:red;">R</span><span style="color:chartreuse;">G</span><span style="color:aqua;">B</span>):</p>
+				<p>
+					<input type="text" id="tree-color-R"/>
+					<input type="text" id="tree-color-G"/>
+					<input type="text" id="tree-color-B"/>
+				</p>
+			</div>
 
 
 
 
-			<div id="slider-R" style="height: 200px;"></div>
-			<div id="slider-G" style="height: 200px;"></div>
-			<div id="slider-B" style="height: 200px;"></div>
+			<div id="tree-slider-R"></div>
+			<div id="tree-slider-G"></div>
+			<div id="tree-slider-B"></div>
 	</body>
 </html>

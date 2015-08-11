@@ -1,14 +1,7 @@
 var ctx;
 var elem;
 var seedPoints;
-var colours = {
-	// Background colour (black)
-	background: "rgb(0,0,0)",
-	// Tree colour (white)
-	tree: "rgb(255,255,255)",
-	// Text colour (red)
-	text: "rgb(255,0,0)"
-}
+var colours = {};
 
 function setupInteractions() {
 	function createSlider(slider, boundTextField) {
@@ -20,19 +13,17 @@ function setupInteractions() {
 			value: 0,
 			slide: function( event, ui ) {
 				boundTextField.val( ui.value );
-				// Update colours
-				setColours();
 				// Redraw canvas
 				updateCanvas();
 			}
 		})
 	}
-	createSlider($( "#slider-R" ), $( "#tree-color-R" ));
-	$( "#slider-R" ).slider( "value", 255 );
-	createSlider($( "#slider-G" ), $( "#tree-color-G" ));
-	$( "#slider-G" ).slider( "value", 255 );
-	createSlider($( "#slider-B" ), $( "#tree-color-B" ));
-	$( "#slider-B" ).slider( "value", 255 );
+	createSlider($( "#tree-slider-R" ), $( "#tree-color-R" ));
+	$( "#tree-slider-R" ).slider( "value", 255 );
+	createSlider($( "#tree-slider-G" ), $( "#tree-color-G" ));
+	$( "#tree-slider-G" ).slider( "value", 255 );
+	createSlider($( "#tree-slider-B" ), $( "#tree-color-B" ));
+	$( "#tree-slider-B" ).slider( "value", 255 );
 }
 
 /////////////////////
@@ -56,12 +47,14 @@ function setSeedPoints() {
 }
 
 function setColours() {
-   var rgb =[
-       $('#slider-R').slider("value"),
-       $('#slider-G').slider("value"),
-       $('#slider-B').slider("value")
-   ];
-   colours.tree = "rgb("+ rgb.join(',') + ")" ;
+	colours.background = "rgb(0,0,0)";
+
+	var tree_rgb =[
+		$('#tree-slider-R').slider("value"),
+		$('#tree-slider-G').slider("value"),
+		$('#tree-slider-B').slider("value")
+	];
+   colours.tree = "rgb("+ tree_rgb.join(',') + ")" ;
 }
 
 var design = {
@@ -128,23 +121,21 @@ function updateCanvas(){
 		ctx.closePath();
 	}
 
-	function writeSettings(){
-		// Write details used to the bottom of screen
-		ctx.fillStyle = colours.text;
-		ctx.beginPath();
-		ctx.fillText("Iterations: " + design.depth, seedPoints.text.x, seedPoints.text.y);
-		ctx.fillText("Number of trees: " + design.noOfTrees, seedPoints.text.x, seedPoints.text.y + seedPoints.text.offset);
-		ctx.fillText("Fork rotation from each root: " + design.rotationPerIteration, seedPoints.text.x, seedPoints.text.y + 2*seedPoints.text.offset);
-		ctx.fillText("Starting rotation from upright: " + design.startingAngle, seedPoints.text.x, seedPoints.text.y + 3*seedPoints.text.offset);
-		ctx.fillText("Tree colour: " + colours.tree, seedPoints.text.x, seedPoints.text.y + 4*seedPoints.text.offset);
-		ctx.fillText("Background colour: " + colours.background, seedPoints.text.x, seedPoints.text.y + 5*seedPoints.text.offset);
-		ctx.fillText("Text colour: " + colours.text, seedPoints.text.x, seedPoints.text.y + 6*seedPoints.text.offset);
-		ctx.closePath();
-	}
+	setColours();	
 
 	drawBackground();
 	drawTrees();
 	writeSettings();
+}
+
+function writeSettings(){
+	// Write details used to the bottom of screen
+	$("#depth").text(design.depth);
+	$("#noOfTrees").text(design.noOfTrees);
+	$("#rotationPerIteration").text(design.rotationPerIteration);
+	$("#startingAngle").text(design.startingAngle);
+	$("#colourTree").text(colours.tree.toString());
+	$("#colourBackground").text(colours.background.toString());
 }
 
 $(window).resize(function() {

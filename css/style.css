@@ -6,13 +6,25 @@ html, body {
 
 /* Hides text inputs which are bound to slider values */
 input {
-	display:none;
+	display: none;
+}
+
+/* Anything that goes over canvas */
+p, button {
+	position: absolute;
+	z-index: 1;
+}
+
+#settings p {
+	color:white;
+	margin-left:10px;
 }
 
 /* Tree colour slider positions */
-#slider-R, #slider-G, #slider-B {
-	margin-left: 20px;
+#tree-slider-R, #tree-slider-G, #tree-slider-B {
+	height: 150px;
+	margin-left: 14px;
 	margin-right: 20px;
-	top: 150px;
-	float:left;
+	top: 180px;
+	float: left;
 }
