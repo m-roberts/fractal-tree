@@ -2,33 +2,38 @@ var ctx;
 var elem;
 var seedPoints;
 var colours = {
-	// Background colour (white)
-	background: "#000000",
-	// Tree colour (black)
-	tree: "#FFFFFF",
+	// Background colour (black)
+	background: "rgb(0,0,0)",
+	// Tree colour (white)
+	tree: "rgb(255,255,255)",
 	// Text colour (red)
-	text: "#FF0000"
+	text: "rgb(255,0,0)"
 }
 
-function createSlider(slider, boundTextField) {
-   slider.slider({
-      orientation: "vertical",
-      range: "min",
-      min: 0,
-      max: 255,
-      value: 0,
-      slide: function( event, ui ) {
-        boundTextField.val( ui.value );
-        drawOnCanvas();
-      }
-  })
-}
-
-$(function() {
+function setupInteractions() {
+	function createSlider(slider, boundTextField) {
+		slider.slider({
+			orientation: "vertical",
+			range: "min",
+			min: 0,
+			max: 255,
+			value: 0,
+			slide: function( event, ui ) {
+				boundTextField.val( ui.value );
+				// Update colours
+				setColours();
+				// Redraw canvas
+				updateCanvas();
+			}
+		})
+	}
 	createSlider($( "#slider-R" ), $( "#tree-color-R" ));
+	$( "#slider-R" ).slider( "value", 255 );
 	createSlider($( "#slider-G" ), $( "#tree-color-G" ));
-	createSlider($( "#slider-B" ), $( "#tree-color-B" ));    
-});
+	$( "#slider-G" ).slider( "value", 255 );
+	createSlider($( "#slider-B" ), $( "#tree-color-B" ));
+	$( "#slider-B" ).slider( "value", 255 );
+}
 
 /////////////////////
 // START VARIABLES //
@@ -147,14 +152,13 @@ $(window).resize(function() {
 	setCanvasSize();
 	// Update seed point for tree
 	setSeedPoints();
-	// Update colours
-	setColours();
 	// Redraw canvas
 	updateCanvas();
 });
 
 $( document ).ready(function() {
 	elem = document.getElementById('fractalTree');
+	setupInteractions();
 	setCanvasSize();
 	setSeedPoints();
 	ctx = elem.getContext('2d');
