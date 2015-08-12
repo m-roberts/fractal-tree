@@ -22,9 +22,8 @@ p, button {
 
 #iterations-slider {
 	width: 150px;
-	margin-top: 14px;
-	margin-left: 20px;
-	top: 10px;
+	margin-top: 15px;
+	/*margin-left: 50px;*/
 	float: left;
 }
 

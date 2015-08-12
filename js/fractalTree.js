@@ -22,7 +22,7 @@ function setupInteractions() {
 	}
 	
 	createSlider($( "#iterations-slider" ), $( "#iterations-txt" ), 1, 15, "horizontal");
-	$( "#iterations-slider" ).slider( "value", 7 );
+	$( "#iterations-slider" ).slider( "value", 8 );
 
 	createSlider($( "#tree-slider-R" ), $( "#tree-color-R" ), 0, 255, "vertical");
 	$( "#tree-slider-R" ).slider( "value", 255 );
