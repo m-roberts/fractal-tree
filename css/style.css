@@ -20,6 +20,14 @@ p, button {
 	margin-left:10px;
 }
 
+#iterations-slider {
+	width: 150px;
+	margin-top: 14px;
+	margin-left: 20px;
+	top: 10px;
+	float: left;
+}
+
 /* Tree colour slider positions */
 #tree-slider-R, #tree-slider-G, #tree-slider-B {
 	height: 150px;

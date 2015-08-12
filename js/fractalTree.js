@@ -2,14 +2,16 @@ var ctx;
 var elem;
 var seedPoints;
 var colours = {};
+var design = {};
+var scalingFactor;
 
 function setupInteractions() {
-	function createSlider(slider, boundTextField) {
+	function createSlider(slider, boundTextField, min, max, orientation) {
 		slider.slider({
-			orientation: "vertical",
+			orientation: orientation,
 			range: "min",
-			min: 0,
-			max: 255,
+			min: min,
+			max: max,
 			value: 0,
 			slide: function( event, ui ) {
 				boundTextField.val( ui.value );
@@ -18,11 +20,15 @@ function setupInteractions() {
 			}
 		})
 	}
-	createSlider($( "#tree-slider-R" ), $( "#tree-color-R" ));
+	
+	createSlider($( "#iterations-slider" ), $( "#iterations-txt" ), 1, 15, "horizontal");
+	$( "#iterations-slider" ).slider( "value", 7 );
+
+	createSlider($( "#tree-slider-R" ), $( "#tree-color-R" ), 0, 255, "vertical");
 	$( "#tree-slider-R" ).slider( "value", 255 );
-	createSlider($( "#tree-slider-G" ), $( "#tree-color-G" ));
+	createSlider($( "#tree-slider-G" ), $( "#tree-color-G" ), 0, 255, "vertical");
 	$( "#tree-slider-G" ).slider( "value", 255 );
-	createSlider($( "#tree-slider-B" ), $( "#tree-color-B" ));
+	createSlider($( "#tree-slider-B" ), $( "#tree-color-B" ), 0, 255, "vertical");
 	$( "#tree-slider-B" ).slider( "value", 255 );
 }
 
@@ -57,24 +63,30 @@ function setColours() {
    colours.tree = "rgb("+ tree_rgb.join(',') + ")" ;
 }
 
-var design = {
-	// Number of iterations
-	depth: 9,
-	// Set number of trees to draw
-	noOfTrees: 7,
-	// Angle by which each root rotates from its preceding fork
-	rotationPerIteration: 20,
-	// Starting position (+/-0 = top, +90/-270 = right, +/-180 = down, +270/-90 = left)
-	startingAngle: 0
+function setDesign() {
+	design = {
+		// Number of iterations
+		depth: $('#iterations-slider').slider("value"),
+		// depth: 9,
+		// Set number of trees to draw
+		noOfTrees: 7,
+		// Angle by which each root rotates from its preceding fork
+		rotationPerIteration: 20,
+		// Starting position (+/-0 = top, +90/-270 = right, +/-180 = down, +270/-90 = left)
+		startingAngle: 0
+	}
+	// Scales size of tree in canvas
+	scalingFactor = 100*design.depth/Math.pow(Math.sqrt(design.depth), 3);
 }
+
+
 
 var lineWidth = 1;
 ///////////////////
 // END VARIABLES //
 ///////////////////
 
-// Scales size of tree in canvas
-var scalingFactor = 100*design.depth/Math.pow(Math.sqrt(design.depth), 3);
+
 // Constant
 var degToRad = Math.PI / 180.0;
 
@@ -122,6 +134,8 @@ function updateCanvas(){
 	}
 
 	setColours();	
+
+	setDesign();
 
 	drawBackground();
 	drawTrees();
