@@ -19,9 +19,6 @@
 			<!-- <button type="button" class="btn btn-primary" style="right:0px;">Draw</button> -->
 			
 			<div id="settings">
-				<p style="margin-top:30px;">Number of trees: <span id="noOfTrees"></span></p>
-				<p style="margin-top:50px;">Fork rotation from each root: <span id="rotationPerIteration"></span></p>
-				<p style="margin-top:70px;">Starting rotation from upright: <span id="startingAngle"></span></p>
 				<p style="margin-top:90px;">Tree colour: <span id="colourTree"></span></p>
 				<p style="margin-top:110px;">Background colour: <span id="colourBackground"></span></p>
 			</div>
@@ -29,6 +26,9 @@
 			<!-- Text values for user interactions -->
 			<div>
 					<input type="text" id="iterations-txt"/>
+					<input type="text" id="noOfTrees-txt"/>
+					<input type="text" id="rotationPerIteration-txt"/>
+					<input type="text" id="startingAngle-txt"/>
 					<input type="text" id="tree-color-R"/>
 					<input type="text" id="tree-color-G"/>
 					<input type="text" id="tree-color-B"/>
@@ -48,5 +48,17 @@
 				Iterations: <span id="depth"></span>
 			</p>
 			<div id="iterations-slider"></div>
+			<p style="color:white;margin-left:10px;margin-top:30px;">
+				Number of trees: <span id="noOfTrees"></span>
+			</p>
+			<div id="noOfTrees-slider"></div>
+			<p style="color:white;margin-left:10px;margin-top:50px;">
+				Fork rotation from each root: <span id="rotationPerIteration"></span>
+			</p>
+			<div id="rotationPerIteration-slider"></div>
+			<p style="color:white;margin-left:10px;margin-top:70px;">
+				Starting rotation from upright: <span id="startingAngle"></span>
+			</p>
+			<div id="startingAngle-slider"></div>
 	</body>
 </html>

@@ -24,6 +24,15 @@ function setupInteractions() {
 	createSlider($( "#iterations-slider" ), $( "#iterations-txt" ), 1, 15, "horizontal");
 	$( "#iterations-slider" ).slider( "value", 8 );
 
+	createSlider($( "#noOfTrees-slider" ), $( "#noOfTrees-txt" ), 1, 15, "horizontal");
+	$( "#noOfTrees-slider" ).slider( "value", 6 );
+
+	createSlider($( "#rotationPerIteration-slider" ), $( "#rotationPerIteration-txt" ), 0, 360, "horizontal");
+	$( "#rotationPerIteration-slider" ).slider( "value", 60 );
+
+	createSlider($( "#startingAngle-slider" ), $( "#startingAngle-txt" ), 0, 360, "horizontal");
+	$( "#startingAngle-slider" ).slider( "value", 0 );
+
 	createSlider($( "#tree-slider-R" ), $( "#tree-color-R" ), 0, 255, "vertical");
 	$( "#tree-slider-R" ).slider( "value", 255 );
 	createSlider($( "#tree-slider-G" ), $( "#tree-color-G" ), 0, 255, "vertical");
@@ -69,11 +78,15 @@ function setDesign() {
 		depth: $('#iterations-slider').slider("value"),
 		// depth: 9,
 		// Set number of trees to draw
-		noOfTrees: 7,
+		noOfTrees: $('#noOfTrees-slider').slider("value"),
+		// noOfTrees: 7,
 		// Angle by which each root rotates from its preceding fork
-		rotationPerIteration: 20,
+		rotationPerIteration: $('#rotationPerIteration-slider').slider("value"),
+		// rotationPerIteration: 20,
 		// Starting position (+/-0 = top, +90/-270 = right, +/-180 = down, +270/-90 = left)
-		startingAngle: 0
+		startingAngle: $('#startingAngle-slider').slider("value"),
+		// startingAngle: 0
+
 	}
 	// Scales size of tree in canvas
 	scalingFactor = 100*design.depth/Math.pow(Math.sqrt(design.depth), 3);
