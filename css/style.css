@@ -20,6 +20,39 @@ p, button {
 	margin-left:10px;
 }
 
+#iterations-slider {
+	width: 150px;
+	margin-top: 15px;
+	margin-left: 100px;
+	float: left;
+}
+
+#noOfTrees-slider {
+	width: 150px;
+	top: 20px;
+	margin-top: 15px;
+	margin-left: -150px;
+	float: left;
+}
+
+#rotationPerIteration-slider {
+	width: 150px;
+	top: 20px;
+	margin-top: 35px;
+	margin-left: -150px;
+	float: left;
+}
+
+#startingAngle-slider {
+	width: 150px;
+	top: 20px;
+	margin-top: 55px;
+	margin-left: -150px;
+	float: left;
+}
+
+
+
 /* Tree colour slider positions */
 #tree-slider-R, #tree-slider-G, #tree-slider-B {
 	height: 150px;
