@@ -39,6 +39,13 @@ function setupInteractions() {
 	$( "#tree-slider-G" ).slider( "value", 255 );
 	createSlider($( "#tree-slider-B" ), $( "#tree-color-B" ), 0, 255, "vertical");
 	$( "#tree-slider-B" ).slider( "value", 255 );
+
+	createSlider($( "#back-slider-R" ), $( "#back-color-R" ), 0, 255, "vertical");
+	$( "#back-slider-R" ).slider( "value", 0 );
+	createSlider($( "#back-slider-G" ), $( "#back-color-G" ), 0, 255, "vertical");
+	$( "#back-slider-G" ).slider( "value", 0 );
+	createSlider($( "#back-slider-B" ), $( "#back-color-B" ), 0, 255, "vertical");
+	$( "#back-slider-B" ).slider( "value", 0 );
 }
 
 /////////////////////
@@ -62,7 +69,14 @@ function setSeedPoints() {
 }
 
 function setColours() {
-	colours.background = "rgb(0,0,0)";
+	// colours.background = "rgb(0,0,0)";
+
+	var background_rgb =[
+		$('#back-slider-R').slider("value"),
+		$('#back-slider-G').slider("value"),
+		$('#back-slider-B').slider("value")
+	];
+   colours.background = "rgb("+ background_rgb.join(',') + ")" ;
 
 	var tree_rgb =[
 		$('#tree-slider-R').slider("value"),

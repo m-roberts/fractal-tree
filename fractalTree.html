@@ -19,6 +19,37 @@
 			<!-- <button type="button" class="btn btn-primary" style="right:0px;">Draw</button> -->
 			
 			<div id="settings">
+				<!-- Slider display -->
+				<p style="color:white;margin-left:10px;margin-top:150px;">
+					Tree colour (<span style="color:red;">R</span><span style="color:chartreuse;">G</span><span style="color:aqua;">B</span>):</p>
+				<p>
+				<!-- http://jqueryui.com/slider/#colorpicker -->
+				<div id="tree-slider-R"></div>
+				<div id="tree-slider-G"></div>
+				<div id="tree-slider-B"></div>
+				<p style="color:white;margin-left:10px;margin-top:350px;">
+					Background colour (<span style="color:red;">R</span><span style="color:chartreuse;">G</span><span style="color:aqua;">B</span>):</p>
+				<p>
+				<!-- http://jqueryui.com/slider/#colorpicker -->
+				<div id="back-slider-R"></div>
+				<div id="back-slider-G"></div>
+				<div id="back-slider-B"></div>
+				<p style="color:white;margin-left:10px;margin-top:10px;">
+					Iterations: <span id="depth"></span>
+				</p>
+				<div id="iterations-slider"></div>
+				<p style="color:white;margin-left:10px;margin-top:30px;">
+					Number of trees: <span id="noOfTrees"></span>
+				</p>
+				<div id="noOfTrees-slider"></div>
+				<p style="color:white;margin-left:10px;margin-top:50px;">
+					Fork rotation from each root: <span id="rotationPerIteration"></span>
+				</p>
+				<div id="rotationPerIteration-slider"></div>
+				<p style="color:white;margin-left:10px;margin-top:70px;">
+					Starting rotation from upright: <span id="startingAngle"></span>
+				</p>
+				<div id="startingAngle-slider"></div>
 				<p style="margin-top:90px;">Tree colour: <span id="colourTree"></span></p>
 				<p style="margin-top:110px;">Background colour: <span id="colourBackground"></span></p>
 			</div>
@@ -32,33 +63,13 @@
 					<input type="text" id="tree-color-R"/>
 					<input type="text" id="tree-color-G"/>
 					<input type="text" id="tree-color-B"/>
+					<input type="text" id="back-color-R"/>
+					<input type="text" id="back-color-G"/>
+					<input type="text" id="back-color-B"/>
 				</p>
 			</div>
 
 
-			<!-- Slider display -->
-			<p style="color:white;margin-left:10px;margin-top:150px;">
-				Tree colour (<span style="color:red;">R</span><span style="color:chartreuse;">G</span><span style="color:aqua;">B</span>):</p>
-			<p>
-			<!-- http://jqueryui.com/slider/#colorpicker -->
-			<div id="tree-slider-R"></div>
-			<div id="tree-slider-G"></div>
-			<div id="tree-slider-B"></div>
-			<p style="color:white;margin-left:10px;margin-top:10px;">
-				Iterations: <span id="depth"></span>
-			</p>
-			<div id="iterations-slider"></div>
-			<p style="color:white;margin-left:10px;margin-top:30px;">
-				Number of trees: <span id="noOfTrees"></span>
-			</p>
-			<div id="noOfTrees-slider"></div>
-			<p style="color:white;margin-left:10px;margin-top:50px;">
-				Fork rotation from each root: <span id="rotationPerIteration"></span>
-			</p>
-			<div id="rotationPerIteration-slider"></div>
-			<p style="color:white;margin-left:10px;margin-top:70px;">
-				Starting rotation from upright: <span id="startingAngle"></span>
-			</p>
-			<div id="startingAngle-slider"></div>
+			
 	</body>
 </html>
