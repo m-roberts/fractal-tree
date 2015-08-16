@@ -6,6 +6,13 @@ var design = {};
 var scalingFactor;
 
 function setupInteractions() {
+	// Set up download button
+	var button = document.getElementById('btn-download');
+	button.addEventListener('click', function (e) {
+		var dataURL = elem.toDataURL('image/png');
+		button.href = dataURL;
+	});
+	
 	function createSlider(slider, boundTextField, min, max, orientation) {
 		slider.slider({
 			orientation: orientation,
