@@ -14,8 +14,7 @@ m-roberts.github.io/fractal-tree
 ### Changelog
 
 v0.1.4
-  - Added JQuery inputs to change variables in real-time without page reload
-  - Improved variable display, writing to actual text rather than on canvas
+  - Added JQuery inputs to change most variables in real-time without page reload
 
 v0.1.3
   - Moved settings display ('Toto, I've a feeling we're not in canvas anymore.'), needs colour option
@@ -34,6 +33,7 @@ v0.1.0
   - Fails whenever canvas size is changed
 
 ### TODO
+  - Add mobile support
   - Improve overall CSS styling and formatting of page
   - Improve colour sliders (fetch initial tree colour from slider starting values, edit colour of each slider to reflect RGB rather than just pale orange)
   - Add save and load functionality (use database for JSON variables? Encode them into GET var in URL? http://stackoverflow.com/questions/16686121/javascript-save-way-to-read-get-without-php)
