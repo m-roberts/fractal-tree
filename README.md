@@ -9,10 +9,7 @@ Javascript implementation of a repeating fractal tree design for fun
 
 ### Running Online
 It is possible to run the web application directly from the repo:
-https://cdn.rawgit.com/M-Roberts/fractal-tree/[commit_hash]/fractalTree.html
-
-(Replace [commit_hash] with the full hash of the commit to be opened
-e.g.: https://cdn.rawgit.com/M-Roberts/fractal-tree/45f42419a31c4068c9c7f398a96794f7f5f91223/fractalTree.html)
+m-roberts.github.io/fractal-tree
 
 ### Changelog
 
