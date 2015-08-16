@@ -33,14 +33,17 @@ v0.1.0
   - Fails whenever canvas size is changed
 
 ### TODO
+  **Functionality**
   - Add mobile support
+  - Add transitions (i.e. ability to automatically move slider controls) -> GIF support?
+  - Add manual zoom
+  - Improve automatic zoom with better scaling function which automatically adjusts to fit page no matter what the design
   - Improve overall CSS styling and formatting of page
   - Improve colour sliders (fetch initial tree colour from slider starting values, edit colour of each slider to reflect RGB rather than just pale orange)
-  - Add save and load functionality (use database for JSON variables? Encode them into GET var in URL? http://stackoverflow.com/questions/16686121/javascript-save-way-to-read-get-without-php)
-  - Separate functions and default variable values by file; give JS files better names
   - Adjust line width, branch length, colour, etc. according to generation of line drawn
+  - Add save and load functionality (use database for JSON variables? Encode them into GET var in URL? http://stackoverflow.com/questions/16686121/javascript-save-way-to-read-get-without-php)
+  **Back-end**
+  - Separate functions and default variable values by file; give JS files better names
   - Establish computational limits to prevent variables from being too large as to break
-  - Get better scaling function which automatically adjusts to fit page no matter what the fractal tree design
-  - Provide better commenting
-  - Real-time Javascript function editing (if possible)
-  - Create github.io page which gets latest commit hash, and redirects to/fetches from corresponding 'Raw Git' URL
+  - Better commenting
+  - Real-time JS function editing (if possible)
