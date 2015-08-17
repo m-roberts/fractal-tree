@@ -51,7 +51,13 @@ p, button {
 	float: left;
 }
 
-
+#zoom-slider {
+	width: 150px;
+	top: 20px;
+	margin-top: 75px;
+	margin-left: -150px;
+	float: left;
+}
 
 /* Tree colour slider positions */
 #tree-slider-R, #tree-slider-G, #tree-slider-B {

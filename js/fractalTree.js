@@ -53,6 +53,9 @@ function setupInteractions() {
 	$( "#back-slider-G" ).slider( "value", 0 );
 	createSlider($( "#back-slider-B" ), $( "#back-color-B" ), 0, 255, "vertical");
 	$( "#back-slider-B" ).slider( "value", 0 );
+
+	createSlider($( "#zoom-slider" ), $( "#zoom-txt" ), 0, 200, "horizontal");
+	$( "#zoom-slider" ).slider( "value", 100 );
 }
 
 /////////////////////
@@ -110,7 +113,8 @@ function setDesign() {
 
 	}
 	// Scales size of tree in canvas
-	scalingFactor = 100*design.depth/Math.pow(Math.sqrt(design.depth), 3);
+	var zoom = $('#zoom-slider').slider("value");
+	scalingFactor = zoom*design.depth/Math.pow(Math.sqrt(design.depth), 3);
 }
 
 
