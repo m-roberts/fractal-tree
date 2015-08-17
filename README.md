@@ -37,7 +37,8 @@ v0.1.0
 ### TODO
   **Functionality**
   - Add mobile support
-  - Add transitions (i.e. ability to automatically move slider controls) -> GIF support?
+  - Add transitions/animations (i.e. ability to automatically move slider controls) -> GIF support?
+  - Add show/hide button for settings
   - Improve automatic zoom with better scaling function which automatically adjusts to fit page no matter what the design
   - Improve overall formatting of page
   - Improve colour sliders (fetch initial tree colour from slider starting values, edit colour of each slider to reflect RGB rather than just pale orange)

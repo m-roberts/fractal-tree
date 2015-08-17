@@ -80,15 +80,31 @@ p, button {
 	height: 150px;
 	margin-left: 14px;
 	margin-right: 20px;
-	top: 200px;
+	top: 220px;
 	float: left;
 }
 
 /* Background colour slider positions */
-#back-slider-R, #back-slider-G, #back-slider-B {
+#back-slider-R {
 	height: 150px;
-	margin-left: 14px;
+	margin-left: -125px;
 	margin-right: 20px;
-	top: 370px;
+	top: 390px;
+	float: left;
+}
+
+#back-slider-G {
+	height: 150px;
+	margin-left: -79px;
+	margin-right: 20px;
+	top: 390px;
+	float: left;
+}
+
+#back-slider-B {
+	height: 150px;
+	margin-left: -33px;
+	margin-right: 20px;
+	top: 390px;
 	float: left;
 }
