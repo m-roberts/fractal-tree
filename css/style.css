@@ -43,7 +43,7 @@ p, button {
 	float: left;
 }
 
-#startingAngle-slider {
+#branchIterationScaling-slider {
 	width: 150px;
 	top: 20px;
 	margin-top: 55px;
@@ -51,7 +51,7 @@ p, button {
 	float: left;
 }
 
-#lineWidth-slider {
+#startingAngle-slider {
 	width: 150px;
 	top: 20px;
 	margin-top: 75px;
@@ -59,10 +59,18 @@ p, button {
 	float: left;
 }
 
-#zoom-slider {
+#lineWidth-slider {
 	width: 150px;
 	top: 20px;
 	margin-top: 95px;
+	margin-left: -150px;
+	float: left;
+}
+
+#zoom-slider {
+	width: 150px;
+	top: 20px;
+	margin-top: 115px;
 	margin-left: -150px;
 	float: left;
 }
@@ -72,7 +80,7 @@ p, button {
 	height: 150px;
 	margin-left: 14px;
 	margin-right: 20px;
-	top: 180px;
+	top: 200px;
 	float: left;
 }
 

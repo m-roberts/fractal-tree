@@ -4,7 +4,6 @@ var seedPoints;
 var colours = {};
 var design = {};
 var zoom;
-var scalingFactor;
 
 function setupInteractions() {
 	// Set up download button
@@ -36,7 +35,10 @@ function setupInteractions() {
 	$( "#noOfTrees-slider" ).slider( "value", 6 );
 
 	createSlider($( "#rotationPerIteration-slider" ), $( "#rotationPerIteration-txt" ), 0, 360, "horizontal");
-	$( "#rotationPerIteration-slider" ).slider( "value", 60 );
+	$( "#rotationPerIteration-slider" ).slider( "value", 30 );
+
+	createSlider($( "#branchIterationScaling-slider" ), $( "#branchIterationScaling-txt" ), 0, 100, "horizontal");
+	$( "#branchIterationScaling-slider" ).slider( "value", 100 );
 
 	createSlider($( "#startingAngle-slider" ), $( "#startingAngle-txt" ), 0, 360, "horizontal");
 	$( "#startingAngle-slider" ).slider( "value", 0 );
@@ -58,8 +60,8 @@ function setupInteractions() {
 	createSlider($( "#zoom-slider" ), $( "#zoom-txt" ), 0, 200, "horizontal");
 	$( "#zoom-slider" ).slider( "value", 100 );
 
-	createSlider($( "#lineWidth-slider" ), $( "#lineWidth-txt" ), 0, 30, "horizontal");
-	$( "#lineWidth-slider" ).slider( "value", 3 );
+	createSlider($( "#lineWidth-slider" ), $( "#lineWidth-txt" ), 1, 30, "horizontal");
+	$( "#lineWidth-slider" ).slider( "value", 1 );
 }
 
 /////////////////////
@@ -109,6 +111,7 @@ function setDesign() {
 		// Angle by which each root rotates from its preceding fork
 		rotationPerIteration: $('#rotationPerIteration-slider').slider("value"),
 		// rotationPerIteration: 20,
+		branchIterationScaling: $('#branchIterationScaling-slider').slider("value"),
 		// Starting position (+/-0 = top, +90/-270 = right, +/-180 = down, +270/-90 = left)
 		startingAngle: $('#startingAngle-slider').slider("value"),
 		// startingAngle: 0
@@ -116,7 +119,6 @@ function setDesign() {
 	}
 	// Scales size of tree in canvas
 	zoom = $('#zoom-slider').slider("value");
-	scalingFactor = zoom*design.depth/Math.pow(Math.sqrt(design.depth), 3);
 	// Line thickness
 	// Can this be made a function of the generation currently being drawn?
 	ctx.lineWidth = $('#lineWidth-slider').slider("value");
@@ -142,13 +144,19 @@ function drawLine(x1, y1, x2, y2){
   ctx.lineTo(x2, y2);
 }
 function drawTree(x1, y1, angle, depth){
-  if (depth !== 0){
-	var x2 = x1 + (Math.cos(angle * degToRad) * scalingFactor);
-	var y2 = y1 + (Math.sin(angle * degToRad) * scalingFactor);
-	drawLine(x1, y1, x2, y2);
-	drawTree(x2, y2, angle - design.rotationPerIteration, depth - 1);
-	drawTree(x2, y2, angle + design.rotationPerIteration, depth - 1);
-  }
+	var scalingFactor = zoom*design.depth/Math.pow(Math.sqrt(design.depth), 3);
+	if (depth !== 0){
+		// var x2 = x1 + (Math.cos(angle * degToRad) * (depth * design.branchIterationScaling/100) * scalingFactor);
+		// var y2 = y1 + (Math.sin(angle * degToRad) * (depth * design.branchIterationScaling/100) * scalingFactor);
+		// f(0) = 1
+		// f(1) = depth
+		// f(scaling) = (depth-1)scaling + 1
+		var x2 = x1 + (Math.cos(angle * degToRad) * ((depth-1) * (1 - design.branchIterationScaling/100) + 1) * scalingFactor);
+		var y2 = y1 + (Math.sin(angle * degToRad) * ((depth-1) * (1 - design.branchIterationScaling/100) + 1) * scalingFactor);
+		drawLine(x1, y1, x2, y2);
+		drawTree(x2, y2, angle - design.rotationPerIteration, depth - 1);
+		drawTree(x2, y2, angle + design.rotationPerIteration, depth - 1);
+	}
 }
 
 function updateCanvas(){
@@ -187,6 +195,7 @@ function writeSettings(){
 	$("#depth").text(design.depth);
 	$("#noOfTrees").text(design.noOfTrees);
 	$("#rotationPerIteration").text(design.rotationPerIteration);
+	$("#branchIterationScaling").text(design.branchIterationScaling);
 	$("#zoom").text(zoom);
 	$("#lineWidth").text(ctx.lineWidth);
 	$("#startingAngle").text(design.startingAngle);

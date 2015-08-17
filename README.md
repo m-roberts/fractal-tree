@@ -15,6 +15,8 @@ m-roberts.github.io/fractal-tree
 
 v0.1.4
   - Added JQuery inputs to change most variables in real-time without page reload
+  - Added relative scaling for each branch iteration
+  - Added manual zoom
 
 v0.1.3
   - Moved settings display ('Toto, I've a feeling we're not in canvas anymore.'), needs colour option
@@ -36,13 +38,12 @@ v0.1.0
   **Functionality**
   - Add mobile support
   - Add transitions (i.e. ability to automatically move slider controls) -> GIF support?
-  - Add manual zoom
   - Improve automatic zoom with better scaling function which automatically adjusts to fit page no matter what the design
-  - Improve overall CSS styling and formatting of page
+  - Improve overall formatting of page
   - Improve colour sliders (fetch initial tree colour from slider starting values, edit colour of each slider to reflect RGB rather than just pale orange)
   - Adjust line width, branch length, colour, etc. according to generation of line drawn
   - Add save and load functionality (use database for JSON variables? Encode them into GET var in URL? http://stackoverflow.com/questions/16686121/javascript-save-way-to-read-get-without-php)
-  **Back-end**
+  **Meta**
   - Separate functions and default variable values by file; give JS files better names
   - Establish computational limits to prevent variables from being too large as to break
   - Better commenting
