@@ -37,7 +37,8 @@ v0.1.0
 ### TODO
   **Functionality**
   - Add mobile support
-  - Add transitions/animations (i.e. ability to automatically move slider controls) -> GIF support?
+  - Add animations (i.e. ability to automatically move slider controls) (http://www.kirupa.com/html5/animating_with_requestAnimationFrame.htm) -> GIF support?
+  - Add transitions (i.e. a fluid movement between canvas draws rather than )
   - Add show/hide button for settings
   - Improve automatic zoom with better scaling function which automatically adjusts to fit page no matter what the design
   - Improve overall formatting of page

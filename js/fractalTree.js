@@ -7,10 +7,17 @@ var zoom;
 
 function setupInteractions() {
 	// Set up download button
-	var button = document.getElementById('btn-download');
-	button.addEventListener('click', function (e) {
+	var download_btn = document.getElementById('btn-download');
+	download_btn.addEventListener('click', function (e) {
 		var dataURL = elem.toDataURL('image/png');
-		button.href = dataURL;
+		download_btn.href = dataURL;
+	});
+
+	// Set up settings toggle button
+	var settings_toggle = document.getElementById('btn-settings');
+	settings_toggle.addEventListener('click', function (e) {
+		// Show or hide #settings
+		$("#settings").toggle();
 	});
 	
 	function createSlider(slider, boundTextField, min, max, orientation) {
