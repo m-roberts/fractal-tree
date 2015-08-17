@@ -3,6 +3,7 @@ var elem;
 var seedPoints;
 var colours = {};
 var design = {};
+var zoom;
 var scalingFactor;
 
 function setupInteractions() {
@@ -56,6 +57,9 @@ function setupInteractions() {
 
 	createSlider($( "#zoom-slider" ), $( "#zoom-txt" ), 0, 200, "horizontal");
 	$( "#zoom-slider" ).slider( "value", 100 );
+
+	createSlider($( "#lineWidth-slider" ), $( "#lineWidth-txt" ), 0, 30, "horizontal");
+	$( "#lineWidth-slider" ).slider( "value", 3 );
 }
 
 /////////////////////
@@ -79,8 +83,6 @@ function setSeedPoints() {
 }
 
 function setColours() {
-	// colours.background = "rgb(0,0,0)";
-
 	var background_rgb =[
 		$('#back-slider-R').slider("value"),
 		$('#back-slider-G').slider("value"),
@@ -113,13 +115,13 @@ function setDesign() {
 
 	}
 	// Scales size of tree in canvas
-	var zoom = $('#zoom-slider').slider("value");
+	zoom = $('#zoom-slider').slider("value");
 	scalingFactor = zoom*design.depth/Math.pow(Math.sqrt(design.depth), 3);
+	// Line thickness
+	// Can this be made a function of the generation currently being drawn?
+	ctx.lineWidth = $('#lineWidth-slider').slider("value");
 }
 
-
-
-var lineWidth = 1;
 ///////////////////
 // END VARIABLES //
 ///////////////////
@@ -185,6 +187,8 @@ function writeSettings(){
 	$("#depth").text(design.depth);
 	$("#noOfTrees").text(design.noOfTrees);
 	$("#rotationPerIteration").text(design.rotationPerIteration);
+	$("#zoom").text(zoom);
+	$("#lineWidth").text(ctx.lineWidth);
 	$("#startingAngle").text(design.startingAngle);
 	$("#colourTree").text(colours.tree.toString());
 	$("#colourBackground").text(colours.background.toString());
@@ -205,9 +209,5 @@ $( document ).ready(function() {
 	setCanvasSize();
 	setSeedPoints();
 	ctx = elem.getContext('2d');
-	// Line thickness
-	// Can this be made a function of the generation currently being drawn?
-	ctx.lineWidth = lineWidth;
-
 	updateCanvas();
 });
