@@ -5,6 +5,98 @@ var colours = {};
 var design = {};
 var zoom;
 
+// Default slider values
+var sliders = {
+		iterations: {
+			min: 1,
+			max: 15,
+			val: 8
+		},
+		noOfTrees: {
+			min: 1,
+			max: 15,
+			val: 6
+		},
+		rotationPerIteration: {
+			min: 0,
+			max: 180,
+			val: 30
+		},
+		branchIterationScaling: {
+			min: 0,
+			max: 100,
+			val: 100
+		},
+		startingAngle: {
+			min: 0,
+			max: 360,
+			val: 0
+		},
+		treeColorR: {
+			min: 0,
+			max: 255,
+			val: 255
+		},
+		treeColorG: {
+			min: 0,
+			max: 255,
+			val: 255
+		},
+		treeColorB: {
+			min: 0,
+			max: 255,
+			val: 255
+		},
+		backColorR: {
+			min: 0,
+			max: 255,
+			val: 0
+		},
+		backColorG: {
+			min: 0,
+			max: 255,
+			val: 0
+		},
+		backColorB: {
+			min: 0,
+			max: 255,
+			val: 0
+		},
+		zoom: {
+			min: 0,
+			max: 200,
+			val: 100
+		},
+		lineWidth: {
+			min: 1,
+			max: 30,
+			val: 1
+		}
+	}
+
+function randomiseSliders() {
+	for (var sliderName in sliders) {
+		sliders[sliderName].val = Math.floor((Math.random() * sliders[sliderName].max) + sliders[sliderName].min);	
+	}
+	setSliderValues();
+}
+
+function setSliderValues() {
+	$( "#iterations-slider" ).slider( "value", sliders.iterations.val );
+	$( "#noOfTrees-slider" ).slider( "value", sliders.noOfTrees.val );
+	$( "#rotationPerIteration-slider" ).slider( "value", sliders.rotationPerIteration.val );
+	$( "#branchIterationScaling-slider" ).slider( "value", sliders.branchIterationScaling.val );
+	$( "#startingAngle-slider" ).slider( "value", sliders.startingAngle.val );
+	$( "#tree-slider-R" ).slider( "value", sliders.treeColorR.val );
+	$( "#tree-slider-G" ).slider( "value", sliders.treeColorG.val );
+	$( "#tree-slider-B" ).slider( "value", sliders.treeColorB.val );
+	$( "#back-slider-R" ).slider( "value", sliders.backColorR.val );
+	$( "#back-slider-G" ).slider( "value", sliders.backColorG.val );
+	$( "#back-slider-B" ).slider( "value", sliders.backColorB.val );
+	$( "#zoom-slider" ).slider( "value", sliders.zoom.val );
+	$( "#lineWidth-slider" ).slider( "value", sliders.lineWidth.val );
+}
+
 function setupInteractions() {
 	// Set up download button
 	var download_btn = document.getElementById('btn-download');
@@ -17,7 +109,18 @@ function setupInteractions() {
 	var settings_toggle = document.getElementById('btn-settings');
 	settings_toggle.addEventListener('click', function (e) {
 		// Show or hide #settings
-		$("#settings").toggle();
+		$("#settings").fadeToggle();
+	});
+
+	// Set up randomise button
+	var randomise_btn = document.getElementById('btn-randomise');
+	randomise_btn.addEventListener('click', function (e) {
+		// Set all user-defineable values randomly
+		if (confirm("Are you sure? This might crash!") == true) {
+			randomiseSliders();
+			updateCanvas();
+			
+		}
 	});
 	
 	function createSlider(slider, boundTextField, min, max, orientation) {
@@ -32,43 +135,24 @@ function setupInteractions() {
 				// Redraw canvas
 				updateCanvas();
 			}
-		})
+		});
 	}
 	
-	createSlider($( "#iterations-slider" ), $( "#iterations-txt" ), 1, 15, "horizontal");
-	$( "#iterations-slider" ).slider( "value", 8 );
+	createSlider($( "#iterations-slider" ), $( "#iterations-txt" ), sliders.iterations.min, sliders.iterations.max, "horizontal");
+	createSlider($( "#noOfTrees-slider" ), $( "#noOfTrees-txt" ), sliders.noOfTrees.min, sliders.noOfTrees.max, "horizontal");
+	createSlider($( "#rotationPerIteration-slider" ), $( "#rotationPerIteration-txt" ), sliders.rotationPerIteration.min, sliders.rotationPerIteration.max, "horizontal");
+	createSlider($( "#branchIterationScaling-slider" ), $( "#branchIterationScaling-txt" ), sliders.branchIterationScaling.min, sliders.branchIterationScaling.max, "horizontal");
+	createSlider($( "#startingAngle-slider" ), $( "#startingAngle-txt" ), sliders.startingAngle.min, sliders.startingAngle.max, "horizontal");
+	createSlider($( "#tree-slider-R" ), $( "#tree-color-R" ), sliders.treeColorR.min, sliders.treeColorR.max, "vertical");
+	createSlider($( "#tree-slider-G" ), $( "#tree-color-G" ), sliders.treeColorG.min, sliders.treeColorG.max, "vertical");
+	createSlider($( "#tree-slider-B" ), $( "#tree-color-B" ), sliders.treeColorB.min, sliders.treeColorB.max, "vertical");
+	createSlider($( "#back-slider-R" ), $( "#back-color-R" ), sliders.backColorR.min, sliders.backColorR.max, "vertical");
+	createSlider($( "#back-slider-G" ), $( "#back-color-G" ), sliders.backColorG.min, sliders.backColorG.max, "vertical");
+	createSlider($( "#back-slider-B" ), $( "#back-color-B" ), sliders.backColorB.min, sliders.backColorB.max, "vertical");
+	createSlider($( "#zoom-slider" ), $( "#zoom-txt" ), sliders.zoom.min, sliders.zoom.max, "horizontal");
+	createSlider($( "#lineWidth-slider" ), $( "#lineWidth-txt" ), sliders.lineWidth.min, sliders.lineWidth.max, "horizontal");
 
-	createSlider($( "#noOfTrees-slider" ), $( "#noOfTrees-txt" ), 1, 15, "horizontal");
-	$( "#noOfTrees-slider" ).slider( "value", 6 );
-
-	createSlider($( "#rotationPerIteration-slider" ), $( "#rotationPerIteration-txt" ), 0, 360, "horizontal");
-	$( "#rotationPerIteration-slider" ).slider( "value", 30 );
-
-	createSlider($( "#branchIterationScaling-slider" ), $( "#branchIterationScaling-txt" ), 0, 100, "horizontal");
-	$( "#branchIterationScaling-slider" ).slider( "value", 100 );
-
-	createSlider($( "#startingAngle-slider" ), $( "#startingAngle-txt" ), 0, 360, "horizontal");
-	$( "#startingAngle-slider" ).slider( "value", 0 );
-
-	createSlider($( "#tree-slider-R" ), $( "#tree-color-R" ), 0, 255, "vertical");
-	$( "#tree-slider-R" ).slider( "value", 255 );
-	createSlider($( "#tree-slider-G" ), $( "#tree-color-G" ), 0, 255, "vertical");
-	$( "#tree-slider-G" ).slider( "value", 255 );
-	createSlider($( "#tree-slider-B" ), $( "#tree-color-B" ), 0, 255, "vertical");
-	$( "#tree-slider-B" ).slider( "value", 255 );
-
-	createSlider($( "#back-slider-R" ), $( "#back-color-R" ), 0, 255, "vertical");
-	$( "#back-slider-R" ).slider( "value", 0 );
-	createSlider($( "#back-slider-G" ), $( "#back-color-G" ), 0, 255, "vertical");
-	$( "#back-slider-G" ).slider( "value", 0 );
-	createSlider($( "#back-slider-B" ), $( "#back-color-B" ), 0, 255, "vertical");
-	$( "#back-slider-B" ).slider( "value", 0 );
-
-	createSlider($( "#zoom-slider" ), $( "#zoom-txt" ), 0, 200, "horizontal");
-	$( "#zoom-slider" ).slider( "value", 100 );
-
-	createSlider($( "#lineWidth-slider" ), $( "#lineWidth-txt" ), 1, 30, "horizontal");
-	$( "#lineWidth-slider" ).slider( "value", 1 );
+	setSliderValues();
 }
 
 /////////////////////
@@ -88,7 +172,7 @@ function setSeedPoints() {
 			y: 20,
 			offset: 15
 		}
-	}
+	};
 }
 
 function setColours() {
@@ -97,14 +181,14 @@ function setColours() {
 		$('#back-slider-G').slider("value"),
 		$('#back-slider-B').slider("value")
 	];
-   colours.background = "rgb("+ background_rgb.join(',') + ")" ;
+   colours.background = "rgb("+ background_rgb.join(',') + ")";
 
 	var tree_rgb =[
 		$('#tree-slider-R').slider("value"),
 		$('#tree-slider-G').slider("value"),
 		$('#tree-slider-B').slider("value")
 	];
-   colours.tree = "rgb("+ tree_rgb.join(',') + ")" ;
+   colours.tree = "rgb("+ tree_rgb.join(',') + ")";
 }
 
 function setDesign() {
@@ -123,7 +207,7 @@ function setDesign() {
 		startingAngle: $('#startingAngle-slider').slider("value"),
 		// startingAngle: 0
 
-	}
+	};
 	// Scales size of tree in canvas
 	zoom = $('#zoom-slider').slider("value");
 	// Line thickness
@@ -153,11 +237,6 @@ function drawLine(x1, y1, x2, y2){
 function drawTree(x1, y1, angle, depth){
 	var scalingFactor = zoom*design.depth/Math.pow(Math.sqrt(design.depth), 3);
 	if (depth !== 0){
-		// var x2 = x1 + (Math.cos(angle * degToRad) * (depth * design.branchIterationScaling/100) * scalingFactor);
-		// var y2 = y1 + (Math.sin(angle * degToRad) * (depth * design.branchIterationScaling/100) * scalingFactor);
-		// f(0) = 1
-		// f(1) = depth
-		// f(scaling) = (depth-1)scaling + 1
 		var x2 = x1 + (Math.cos(angle * degToRad) * ((depth-1) * (1 - design.branchIterationScaling/100) + 1) * scalingFactor);
 		var y2 = y1 + (Math.sin(angle * degToRad) * ((depth-1) * (1 - design.branchIterationScaling/100) + 1) * scalingFactor);
 		drawLine(x1, y1, x2, y2);
@@ -180,7 +259,6 @@ function updateCanvas(){
 		ctx.beginPath();
 		ctx.strokeStyle = colours.tree;
 		for (var treeNo = 0; treeNo < design.noOfTrees; treeNo++) {
-
 			// Draw equally spaced trees starting from upright
 			drawTree(seedPoints.tree.x, seedPoints.tree.y, (treeNo*(360/design.noOfTrees))+(design.startingAngle-90), design.depth);
 		}
@@ -188,10 +266,8 @@ function updateCanvas(){
 		ctx.closePath();
 	}
 
-	setColours();	
-
+	setColours();
 	setDesign();
-
 	drawBackground();
 	drawTrees();
 	writeSettings();
@@ -220,10 +296,20 @@ $(window).resize(function() {
 });
 
 $( document ).ready(function() {
+	function showStartupDialog() {
+		$( "#dialog" ).dialog({
+			resizable: false,
+			draggable: false,
+			width: 350,
+			height: 230,
+			dialogClass: "alert",
+		});
+	}
 	elem = document.getElementById('fractalTree');
+	ctx = elem.getContext('2d');
 	setupInteractions();
 	setCanvasSize();
 	setSeedPoints();
-	ctx = elem.getContext('2d');
 	updateCanvas();
+	showStartupDialog();
 });
