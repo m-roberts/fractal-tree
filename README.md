@@ -37,7 +37,7 @@ v0.1.0
 
 ### TODO
   **Functionality**
-  - Implement with Angular (will fix lag)
+  - Implement with Angular (will fix lag) (Note: conflicts with Jekyll [can this be suppressed in just this app?] http://alwayscoding.ca/momentos/2013/10/09/angular-and-liquid-expressions-in-jekyll/)
   - Settings need colour control
   - Add mobile support
   - Add invert option for relative scaling (i.e. gets longer each branch -> '1 - 1/depth')

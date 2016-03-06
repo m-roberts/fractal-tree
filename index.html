@@ -1,98 +1,31 @@
-<html>
+<!doctype html>
+<html ng-app="fractalTree">
 	<head>
-		<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-		<!-- Adds button shading etc -->
-		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
-		
-		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/jquery-ui.css">
+		<link href="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="node_modules/angular-ui-slider/demo/css/slider.css">
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
 
-		<script src="js/jquery-1.11.3.min.js"></script>
-		<script src="js/jquery-ui.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-
+		<script src="js/jquery.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
 		<script src="js/angular.min.js"></script>
-		
-		<script src="js/fractalTree.js"></script>
+		<script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+		<script src="node_modules/angular-ui-slider/src/slider.js"></script>
 
-		<title>Fractal Tree Web App</title>
+
+		<script src="js/angularApp.js"></script>
+		<script src="js/ftCanvas.js"></script>
+		<script src="js/ftDrawService.js"></script>
 	</head>
-	<body>
-
-		<div id="dialog" title="Disclaimer">
-			<p>Hi, please note that things are still being built.
-			In particular, there is an input delay between sliders (as well as the randomise button) and canvas drawing.
-			If you would like to contribute to making this project better and more stable, please head over to the <a href="https://github.com/m-roberts/fractal-tree" id="git-repo" style="border-bottom: 1px dotted;">Github repo</a>.</p>
-		</div>
-
-		<p id="body"></p>
-		<canvas id="fractalTree" style="position: absolute;"></canvas>
-		<a href="#" class="button" id="btn-download" download="myFractalDesign.png"><button type="button" class="btn btn-primary" style="right:0px;">Download</button></a>
-		<button type="button" class="btn btn-primary" id="btn-settings" style="right:88px;">Show/Hide Settings</button>
-		<button type="button" class="btn btn-primary" id="btn-randomise" style="right:237px;">Randomise</button>
-
-		<div id="settings">
-			<!-- Slider display -->
-			<p style="color:white;margin-left:10px;margin-top:190px;">
-				Tree colour (<span style="color:red;">R</span><span style="color:chartreuse;">G</span><span style="color:aqua;">B</span>):</p>
-			<p>
-			<!-- http://jqueryui.com/slider/#colorpicker -->
-			<div id="tree-slider-R"></div>
-			<div id="tree-slider-G"></div>
-			<div id="tree-slider-B"></div>
-			<p style="color:white;margin-left:10px;margin-top:370px;">
-				Background colour (<span style="color:red;">R</span><span style="color:chartreuse;">G</span><span style="color:aqua;">B</span>):</p>
-			<p>
-			<!-- http://jqueryui.com/slider/#colorpicker -->
-			<div id="back-slider-R"></div>
-			<div id="back-slider-G"></div>
-			<div id="back-slider-B"></div>
-
-			<p style="color:white;margin-left:10px;margin-top:10px;">
-				Iterations: <span id="depth"></span>
-			</p>
-			<div id="iterations-slider"></div>
-			<p style="color:white;margin-left:10px;margin-top:30px;">
-				Number of trees: <span id="noOfTrees"></span>
-			</p>
-			<div id="noOfTrees-slider"></div>
-			<p style="color:white;margin-left:10px;margin-top:50px;">
-				Fork rotation from each root: <span id="rotationPerIteration"></span>
-			</p>
-			<div id="rotationPerIteration-slider"></div>
-			<!-- This exists to act as 1/rotationPerIteration -->
-			<!-- <div id="rotationPerIteration-checkbox"></div> -->
-			<p style="color:white;margin-left:10px;margin-top:70px;">
-				Relative scaling from each root: <span id="branchIterationScaling"></span>
-			</p>
-			<div id="branchIterationScaling-slider"></div>
-			<p style="color:white;margin-left:10px;margin-top:90px;">
-				Starting rotation from upright: <span id="startingAngle"></span>
-			</p>
-			<div id="lineWidth-slider"></div>
-			<p style="margin-top:110px;">Line width: <span id="lineWidth"></span></p>
-			<div id="zoom-slider"></div>
-			<p style="margin-top:130px;">Zoom: <span id="zoom"></span></p>
-			<div id="startingAngle-slider"></div>
-			<p style="margin-top:150px;">Tree colour: <span id="colourTree"></span></p>
-			<p style="margin-top:170px;">Background colour: <span id="colourBackground"></span></p>
-		</div>
-
-		<!-- Text values for user interactions -->
-		<div>
-				<input type="text" id="iterations-txt"/>
-				<input type="text" id="noOfTrees-txt"/>
-				<input type="text" id="rotationPerIteration-txt"/>
-				<input type="text" id="startingAngle-txt"/>
-				<input type="text" id="lineWidth-txt"/>
-				<input type="text" id="zoom-txt"/>
-				<input type="text" id="tree-color-R"/>
-				<input type="text" id="tree-color-G"/>
-				<input type="text" id="tree-color-B"/>
-				<input type="text" id="back-color-R"/>
-				<input type="text" id="back-color-G"/>
-				<input type="text" id="back-color-B"/>
-			</p>
-		</div>			
+	<body ng-controller="fractalTreeCtrl" class="container">
+		<div id="red" ui-slider="colorpicker.options" ng-model="colorpicker.red"></div>
+		Red: <input ng-model="colorpicker.red">
+		<div id="green" ui-slider="colorpicker.options" ng-model="colorpicker.green"></div>
+		Green: <input ng-model="colorpicker.green">
+		<div id="blue" ui-slider="colorpicker.options" ng-model="colorpicker.blue"></div>
+		Blue: <input ng-model="colorpicker.blue">
+		<div id="swatch"></div>
+		<ft-canvas></ft-canvas>
 	</body>
 </html>
