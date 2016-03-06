@@ -9,7 +9,7 @@ Javascript implementation of a repeating fractal tree design for fun
 
 ### Running Online
 It is possible to run the web application directly from the repo:
-m-roberts.github.io/fractal-tree
+[m-roberts.github.io/fractal-tree](https://github.com/m-roberts/fractal-tree)
 
 ### Changelog
 
@@ -37,14 +37,14 @@ v0.1.0
 ### TODO
   **Functionality**
   - Add mobile support
-  - Add animations (i.e. ability to automatically move slider controls) (http://www.kirupa.com/html5/animating_with_requestAnimationFrame.htm) -> GIF support?
+  - Add animations (i.e. ability to automatically move slider controls) [http://www.kirupa.com/html5/animating_with_requestAnimationFrame.htm](http://www.kirupa.com/html5/animating_with_requestAnimationFrame.htm) -> GIF support?
   - Add transitions (i.e. a fluid movement between canvas draws rather than )
   - Add show/hide button for settings
   - Improve automatic zoom with better scaling function which automatically adjusts to fit page no matter what the design
   - Improve overall formatting of page
   - Improve colour sliders (fetch initial tree colour from slider starting values, edit colour of each slider to reflect RGB rather than just pale orange)
   - Adjust line width, branch length, colour, etc. according to generation of line drawn
-  - Add save and load functionality (use database for JSON variables? Encode them into GET var in URL? http://stackoverflow.com/questions/16686121/javascript-save-way-to-read-get-without-php)
+  - Add save and load functionality (use database for JSON variables? Encode them into GET var in URL? [http://stackoverflow.com/questions/16686121/javascript-save-way-to-read-get-without-php](http://stackoverflow.com/questions/16686121/javascript-save-way-to-read-get-without-php))
   **Meta**
   - Separate functions and default variable values by file; give JS files better names
   - Establish computational limits to prevent variables from being too large as to break
