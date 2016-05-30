@@ -22,14 +22,42 @@ module.factory('colorpicker', function() {
 module.service("ftDrawService", function($window, colorpicker) {
 	ftDrawService = {};
 
+	var degToRad = Math.PI / 180.0;
+
 	var ctx;
 	var colours = {
 		background: "rgb(0,0,0)",
 		tree: "rgb(255,140,60)"
 	};
+	var design = {
+		depth: 6,
+		noOfTrees: 6,
+		rotationPerIteration: 60,
+		branchIterationScaling: 50,
+		startingAngle: 0
+	};
+
+	var seedPoints = {
+		// Sets position on screen to start drawing tree
+		tree: {
+			// Start in the middle of the screen
+			x: window.innerWidth/2,
+			y: window.innerHeight/2
+		},
+		// Sets position on screen to display text from
+		text: {
+			x: 10,
+			y: 20,
+			offset: 15
+		}
+	}
+
+	// Scales size of tree in canvas
+	var zoom = 100;
 
 	ftDrawService.init = function (context) {
 		ctx = context;
+		ctx.lineWidth = 1;
 
 		setCanvasSize();
 
@@ -39,6 +67,8 @@ module.service("ftDrawService", function($window, colorpicker) {
 
 		ftDrawService.setBgColours();
 		ftDrawService.setTreeColours();
+		// ftDrawService.setDesign();
+
 		ftDrawService.updateCanvas();
 	}
 
@@ -48,9 +78,8 @@ module.service("ftDrawService", function($window, colorpicker) {
 	}
 
 	ftDrawService.updateCanvas = function() {
-		// setDesign();
 		drawBackground();
-		// drawTrees();
+		drawTrees();
 		// writeSettings();
 	}
 
@@ -64,6 +93,23 @@ module.service("ftDrawService", function($window, colorpicker) {
 		// Get colours from sliders
 		// Assign to background colour variable
 	   colours.tree = "rgb(" + r + "," + g + "," + b + ")";
+	}
+
+	function setSeedPoints() {
+		// seedPoints = {
+		// 	// Sets position on screen to start drawing tree
+		// 	tree: {
+		// 		// Start in the middle of the screen
+		// 		x: window.innerWidth/2,
+		// 		y: window.innerHeight/2
+		// 	},
+		// 	// Sets position on screen to display text from
+		// 	text: {
+		// 		x: 10,
+		// 		y: 20,
+		// 		offset: 15
+		// 	}
+		// }
 	}
 
 	function setDesign() {
@@ -99,31 +145,31 @@ module.service("ftDrawService", function($window, colorpicker) {
 	}
 
 	function drawLine(x1, y1, x2, y2){
-	// 	ctx.moveTo(x1, y1);
-	// 	ctx.lineTo(x2, y2);
+		ctx.moveTo(x1, y1);
+		ctx.lineTo(x2, y2);
 	}
 
 	function drawTree(x1, y1, angle, depth){
-	// 	var scalingFactor = zoom*design.depth/Math.pow(Math.sqrt(design.depth), 3);
-	// 	if (depth !== 0){
-	// 		var x2 = x1 + (Math.cos(angle * degToRad) * ((depth-1) * (1 - design.branchIterationScaling/100) + 1) * scalingFactor);
-	// 		var y2 = y1 + (Math.sin(angle * degToRad) * ((depth-1) * (1 - design.branchIterationScaling/100) + 1) * scalingFactor);
-	// 		drawLine(x1, y1, x2, y2);
-	// 		drawTree(x2, y2, angle - design.rotationPerIteration, depth - 1);
-	// 		drawTree(x2, y2, angle + design.rotationPerIteration, depth - 1);
-	// 	}
+		var scalingFactor = zoom*design.depth/Math.pow(Math.sqrt(design.depth), 3);
+		if (depth !== 0){
+			var x2 = x1 + (Math.cos(angle * degToRad) * ((depth-1) * (1 - design.branchIterationScaling/100) + 1) * scalingFactor);
+			var y2 = y1 + (Math.sin(angle * degToRad) * ((depth-1) * (1 - design.branchIterationScaling/100) + 1) * scalingFactor);
+			drawLine(x1, y1, x2, y2);
+			drawTree(x2, y2, angle - design.rotationPerIteration, depth - 1);
+			drawTree(x2, y2, angle + design.rotationPerIteration, depth - 1);
+		}
 	}
 	
 	function drawTrees(){
 		// Draw tree
-		// ctx.beginPath();
-		// ctx.strokeStyle = colours.tree;
-		// for (var treeNo = 0; treeNo < design.noOfTrees; treeNo++) {
-		// 	// Draw equally spaced trees starting from upright
-		// 	drawTree(seedPoints.tree.x, seedPoints.tree.y, (treeNo*(360/design.noOfTrees))+(design.startingAngle-90), design.depth);
-		// }
-		// ctx.stroke();
-		// ctx.closePath();
+		ctx.beginPath();
+		ctx.strokeStyle = colours.tree;
+		for (var treeNo = 0; treeNo < design.noOfTrees; treeNo++) {
+			// Draw equally spaced trees starting from upright
+			drawTree(seedPoints.tree.x, seedPoints.tree.y, (treeNo*(360/design.noOfTrees))+(design.startingAngle-90), design.depth);
+		}
+		ctx.stroke();
+		ctx.closePath();
 	}
 
 	function writeSettings(){

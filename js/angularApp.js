@@ -12,36 +12,6 @@ module.run(function(){
 	
 });
 
-// // This factory is included in the fractalTreeCtrl
-// // Used to update the actual swatch with the values from RGB
-// module.factory('colorpicker', function() {
-// 	function hexFromRGB(r, g, b) {
-// 		var hex = [r.toString(16), g.toString(16), b.toString(16)];
-// 		angular.forEach(hex, function(value, key) {
-// 			if (value.length === 1)
-// 				hex[key] = "0" + value;
-// 		});
-// 		return hex.join('').toUpperCase();
-// 	}
-// 	return {
-// 		refreshSwatch: function(r, g, b) {
-// 			var color = '#' + hexFromRGB(r, g, b);
-// 			angular.element('#swatch').css('background-color', color);
-// 			angular.element('#myCanvas').css('color', color);
-// 		}
-// 	};
-// });
-
-/*
- // To set an option for all sliders
- module.factory('uiSliderConfig', function ($log) {
- return {
- start: function (event, ui) { $log.info('Event: Slider start - set with uiSliderConfig', event); },
- stop: function (event, ui) { $log.info('Event: Slider stop - set with uiSliderCOnfig', event); },
- };
- });
- */
-
 // Belongs to the body (canvas)
 // This includes the colorpicker factory
 // module.controller('fractalTreeCtrl', function($scope, $log, colorpicker) {
