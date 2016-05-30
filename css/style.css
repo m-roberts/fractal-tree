@@ -6,14 +6,30 @@ html, body {
 }
 
 /* From UI slider demo */
-#swatch {
-    width: 100px;
-    height: 100px;
-    border: 1px solid black;
-}
+
 #red .ui-slider-range { background: #ef2929; }
 #red .ui-slider-handle { border-color: #ef2929; }
 #green .ui-slider-range { background: #8ae234; }
 #green .ui-slider-handle { border-color: #8ae234; }
 #blue .ui-slider-range { background: #729fcf; }
 #blue .ui-slider-handle { border-color: #729fcf; }
+
+.card-wide.mdl-card {
+  width: 512px;
+}
+.card-wide > .mdl-card__title {
+  color: #fff;
+  height: 176px;
+  background: url('../assets/demos/welcome_card.jpg') center / cover;
+}
+.card-wide > .mdl-card__menu {
+  color: #fff;
+}
+
+.card-square.mdl-card {
+  width: 320px;
+  height: 320px;
+}
+.card-square > .mdl-card__title {
+  color: #fff;
+}
