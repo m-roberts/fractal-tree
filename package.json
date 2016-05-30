@@ -1,0 +1,24 @@
+{
+  "name": "fractal-tree",
+  "version": "1.0.0",
+  "description": "Javascript implementation of a repeating fractal tree design for fun",
+  "main": "index.js",
+  "dependencies": {
+    "angular-ui-bootstrap": "^1.2.4",
+    "angular-ui-slider": "^0.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m-roberts/fractal-tree.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/m-roberts/fractal-tree/issues"
+  },
+  "homepage": "https://github.com/m-roberts/fractal-tree#readme"
+}

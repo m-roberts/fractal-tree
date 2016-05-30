@@ -6,6 +6,9 @@
 		<link href="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="node_modules/angular-ui-slider/demo/css/slider.css">
 		<link href="css/style.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
+		<script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
 
 		<script src="js/jquery.min.js"></script>
         <script src="js/jquery-ui.min.js"></script>
@@ -19,13 +22,45 @@
 		<script src="js/ftDrawService.js"></script>
 	</head>
 	<body ng-controller="fractalTreeCtrl" class="container">
-		<div id="red" ui-slider="colorpicker.options" ng-model="colorpicker.red"></div>
-		Red: <input ng-model="colorpicker.red">
-		<div id="green" ui-slider="colorpicker.options" ng-model="colorpicker.green"></div>
-		Green: <input ng-model="colorpicker.green">
-		<div id="blue" ui-slider="colorpicker.options" ng-model="colorpicker.blue"></div>
-		Blue: <input ng-model="colorpicker.blue">
-		<div id="swatch"></div>
+		
+		<header class="mdl-layout__header mdl-layout__header--transparent" style="background-color:#BDBDBD">
+	    <div class="mdl-layout__header-row">
+	      <!-- Title -->
+	      <span class="mdl-layout-title">Fractal Tree</span>
+	      <!-- Add spacer, to align navigation to the right -->
+	      <div class="mdl-layout-spacer"></div>
+	      <!-- Navigation -->
+	      <nav class="mdl-navigation">
+	      </nav>
+	    </div>
+	 	</header>
+
+		
+		<div class="mdl-grid">
+
+		<div class="mdl-cell mdl-cell--4-col">
+			<div id="red" ui-slider="colorpicker.options" ng-model="colorpicker.red" style ="display:none;"></div>
+				Red: <input ng-model="colorpicker.red" class="mdl-slider mdl-js-slider" type="range"
+						min="0" max="100" value="0" tabindex="0">
+		</div>
+
+	  	<div class="mdl-cell mdl-cell--4-col">
+			<div id="green" ui-slider="colorpicker.options" ng-model="colorpicker.green" style ="display:none;"></div>
+				Green: <input ng-model="colorpicker.green" class="mdl-slider mdl-js-slider" type="range"
+		 		 	min="0" max="100" value="0" tabindex="0">
+	  	</div>
+
+	  	<div class="mdl-cell mdl-cell--4-col">
+	  		<div id="blue" ui-slider="colorpicker.options" ng-model="colorpicker.blue" style ="display:none;"></div>
+				Blue: <input ng-model="colorpicker.blue" class="mdl-slider mdl-js-slider" type="range"
+		  		min="0" max="100" value="0" tabindex="0">
+	  	</div>
+
+		</div>
+		
+		
+		<div id="swatch" class="center-block"></div>
+		<br>
 		<ft-canvas></ft-canvas>
 	</body>
 </html>
