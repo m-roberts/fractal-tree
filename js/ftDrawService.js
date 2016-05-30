@@ -1,17 +1,45 @@
-module.service("ftDrawService", function($window) {
+// This factory is included in the fractalTreeCtrl
+// Used to update the actual swatch with the values from RGB
+module.factory('colorpicker', function() {
+	function hexFromRGB(r, g, b) {
+		var hex = [r.toString(16), g.toString(16), b.toString(16)];
+		angular.forEach(hex, function(value, key) {
+			if (value.length === 1)
+				hex[key] = "0" + value;
+		});
+		return hex.join('').toUpperCase();
+	}
+	return {
+		refreshCanvas: function(r, g, b) {
+			var color = '#' + hexFromRGB(r, g, b);
+			angular.element('#swatch').css('background-color', color);
+			angular.element('#myCanvas').css('color', color);
+		}
+	};
+});
+
+// This is used in ftCanvas.js to initialise the HTML canvas context
+module.service("ftDrawService", function($window, colorpicker) {
 	ftDrawService = {};
 
 	var ctx;
-	var colours = {};
+	var colours = {
+		background: "rgb(0,0,0)",
+		tree: "rgb(255,140,60)"
+	};
 
 	ftDrawService.init = function (context) {
 		ctx = context;
 
 		setCanvasSize();
-		// DEBUG
+
+		// TO DEBUG INFO TO THE CANVAS (currently black text):
 		// ctx.font = "30px Arial";
 		// ctx.fillText("H:" + ctx.canvas.height + " W:" + ctx.canvas.width, 10, 50);
-		drawBackground();
+
+		ftDrawService.setBgColours();
+		ftDrawService.setTreeColours();
+		ftDrawService.updateCanvas();
 	}
 
 	setCanvasSize = function() {
@@ -20,36 +48,22 @@ module.service("ftDrawService", function($window) {
 	}
 
 	ftDrawService.updateCanvas = function() {
-		setColours();
-		setDesign();
+		// setDesign();
 		drawBackground();
-		drawTrees();
-		writeSettings();
+		// drawTrees();
+		// writeSettings();
 	}
 
-	function setColours() {
+	ftDrawService.setBgColours = function(r, g, b) {
 		// Get colours from sliders
+		// Assign to background colour variable
+	   colours.background = "rgb(" + r + "," + g + "," + b + ")";
+	}
 
-
-	// 	var background_rgb =[
-	// 		$('#back-slider-R').slider("value"),
-	// 		$('#back-slider-G').slider("value"),
-	// 		$('#back-slider-B').slider("value")
-	// 	];
-	
-		// 	Assign to background colour variable
-	   // colours.background = "rgb("+ background_rgb.join(',') + ")";
-
+	ftDrawService.setTreeColours = function(r, g, b) {
 		// Get colours from sliders
-
-	// 	var tree_rgb =[
-	// 		$('#tree-slider-R').slider("value"),
-	// 		$('#tree-slider-G').slider("value"),
-	// 		$('#tree-slider-B').slider("value")
-	// 	];
-	
-		// 	Assign to tree colour variable
-	   // colours.tree = "rgb("+ tree_rgb.join(',') + ")";
+		// Assign to background colour variable
+	   colours.tree = "rgb(" + r + "," + g + "," + b + ")";
 	}
 
 	function setDesign() {
@@ -78,7 +92,7 @@ module.service("ftDrawService", function($window) {
 
 	function drawBackground(){
 		// Set background
-		ctx.fillStyle = "rgb(0,0,0)";
+		ctx.fillStyle = colours.background;
 		ctx.beginPath();
 		ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 		ctx.closePath();
@@ -124,10 +138,6 @@ module.service("ftDrawService", function($window) {
 	// 	$("#colourTree").text(colours.tree.toString());
 	// 	$("#colourBackground").text(colours.background.toString());
 	}
-
-	
-
-	
 
 	return ftDrawService;
 })

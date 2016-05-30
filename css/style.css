@@ -5,15 +5,16 @@ html, body {
 	padding: 0px;
 }
 
-/* From UI slider demo */
-#swatch {
-    width: 100px;
-    height: 100px;
-    border: 1px solid black;
-}
-#red .ui-slider-range { background: #ef2929; }
-#red .ui-slider-handle { border-color: #ef2929; }
-#green .ui-slider-range { background: #8ae234; }
-#green .ui-slider-handle { border-color: #8ae234; }
-#blue .ui-slider-range { background: #729fcf; }
-#blue .ui-slider-handle { border-color: #729fcf; }
+#bg_red .ui-slider-range { background: #ef2929; }
+#bg_red .ui-slider-handle { border-color: #ef2929; }
+#bg_green .ui-slider-range { background: #8ae234; }
+#bg_green .ui-slider-handle { border-color: #8ae234; }
+#bg_blue .ui-slider-range { background: #729fcf; }
+#bg_blue .ui-slider-handle { border-color: #729fcf; }
+
+#tree_red .ui-slider-range { background: #ef2929; }
+#tree_red .ui-slider-handle { border-color: #ef2929; }
+#tree_green .ui-slider-range { background: #8ae234; }
+#tree_green .ui-slider-handle { border-color: #8ae234; }
+#tree_blue .ui-slider-range { background: #729fcf; }
+#tree_blue .ui-slider-handle { border-color: #729fcf; }

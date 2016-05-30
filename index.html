@@ -19,13 +19,17 @@
 		<script src="js/ftDrawService.js"></script>
 	</head>
 	<body ng-controller="fractalTreeCtrl" class="container">
-		<div id="red" ui-slider="colorpicker.options" ng-model="colorpicker.red"></div>
-		Red: <input ng-model="colorpicker.red">
-		<div id="green" ui-slider="colorpicker.options" ng-model="colorpicker.green"></div>
-		Green: <input ng-model="colorpicker.green">
-		<div id="blue" ui-slider="colorpicker.options" ng-model="colorpicker.blue"></div>
-		Blue: <input ng-model="colorpicker.blue">
-		<div id="swatch"></div>
+		<div id="bg_rgb_sliders">
+			<div id="bg_red" ui-slider="bg_colorpicker.options" ng-model="bg_colorpicker.red"></div>
+			<div id="bg_green" ui-slider="bg_colorpicker.options" ng-model="bg_colorpicker.green"></div>
+			<div id="bg_blue" ui-slider="bg_colorpicker.options" ng-model="bg_colorpicker.blue"></div>
+		</div>
+
+		<div id="tree_rgb_sliders">
+			<div id="tree_red" ui-slider="tree_colorpicker.options" ng-model="tree_colorpicker.red"></div>
+			<div id="tree_green" ui-slider="tree_colorpicker.options" ng-model="tree_colorpicker.green"></div>
+			<div id="tree_blue" ui-slider="tree_colorpicker.options" ng-model="tree_colorpicker.blue"></div>
+		</div>
 		<ft-canvas></ft-canvas>
 	</body>
 </html>

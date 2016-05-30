@@ -1,3 +1,4 @@
+// Belongs to the whole web app
 module = angular.module("fractalTree", ['ui.bootstrap', 'ui.slider']);
 module.config(function(){
 	// Allow use of  {( myVariable )} for Angular expressions and avoid conflict with Liquid (included with Jekyll for Github Pages) tags
@@ -11,22 +12,25 @@ module.run(function(){
 	
 });
 
-module.factory('colorpicker', function() {
-	function hexFromRGB(r, g, b) {
-		var hex = [r.toString(16), g.toString(16), b.toString(16)];
-		angular.forEach(hex, function(value, key) {
-			if (value.length === 1)
-				hex[key] = "0" + value;
-		});
-		return hex.join('').toUpperCase();
-	}
-	return {
-		refreshSwatch: function(r, g, b) {
-			var color = '#' + hexFromRGB(r, g, b);
-			angular.element('#swatch').css('background-color', color);
-		}
-	};
-});
+// // This factory is included in the fractalTreeCtrl
+// // Used to update the actual swatch with the values from RGB
+// module.factory('colorpicker', function() {
+// 	function hexFromRGB(r, g, b) {
+// 		var hex = [r.toString(16), g.toString(16), b.toString(16)];
+// 		angular.forEach(hex, function(value, key) {
+// 			if (value.length === 1)
+// 				hex[key] = "0" + value;
+// 		});
+// 		return hex.join('').toUpperCase();
+// 	}
+// 	return {
+// 		refreshSwatch: function(r, g, b) {
+// 			var color = '#' + hexFromRGB(r, g, b);
+// 			angular.element('#swatch').css('background-color', color);
+// 			angular.element('#myCanvas').css('color', color);
+// 		}
+// 	};
+// });
 
 /*
  // To set an option for all sliders
@@ -38,13 +42,31 @@ module.factory('colorpicker', function() {
  });
  */
 
-module.controller('fractalTreeCtrl', function($scope, $log, colorpicker) {
+// Belongs to the body (canvas)
+// This includes the colorpicker factory
+// module.controller('fractalTreeCtrl', function($scope, $log, colorpicker) {
+module.controller('fractalTreeCtrl', function($scope, $log, ftDrawService) {
 
-	function refreshSwatch(ev, ui) {
-		var red = $scope.colorpicker.red,
-				green = $scope.colorpicker.green,
-				blue = $scope.colorpicker.blue;
-		colorpicker.refreshSwatch(red, green, blue);
+	function setBgColour(ev, ui) {
+		// Get RGB values
+		var red = $scope.bg_colorpicker.red,
+			green = $scope.bg_colorpicker.green,
+			blue = $scope.bg_colorpicker.blue;
+		
+		// Update the actual swatch with the values from RGB
+		ftDrawService.setBgColours(red, green, blue);
+		ftDrawService.updateCanvas();
+	}
+
+	function setTreeColour(ev, ui) {
+		// Get RGB values
+		var red = $scope.tree_colorpicker.red,
+			green = $scope.tree_colorpicker.green,
+			blue = $scope.tree_colorpicker.blue;
+		
+		// Update the actual swatch with the values from RGB
+		ftDrawService.setTreeColours(red, green, blue);
+		ftDrawService.updateCanvas();
 	}
 
 	// Slider options with event handlers
@@ -59,7 +81,21 @@ module.controller('fractalTreeCtrl', function($scope, $log, colorpicker) {
 		}
 	};
 
-	$scope.colorpicker = {
+	$scope.bg_colorpicker = {
+		red: 0,
+		green: 0,
+		blue: 0,
+		options: {
+			orientation: 'horizontal',
+			min: 0,
+			max: 255,
+			range: 'min',
+			change: setBgColour,
+			slide: setBgColour
+		}
+	};
+
+	$scope.tree_colorpicker = {
 		red: 255,
 		green: 140,
 		blue: 60,
@@ -68,8 +104,8 @@ module.controller('fractalTreeCtrl', function($scope, $log, colorpicker) {
 			min: 0,
 			max: 255,
 			range: 'min',
-			change: refreshSwatch,
-			slide: refreshSwatch
+			change: setTreeColour,
+			slide: setTreeColour
 		}
 	};
 });
