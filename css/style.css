@@ -33,7 +33,9 @@ html, body {
 .card-square > .mdl-card__title {
   color: #fff;
 }
-
+.card-large.mdl-card {
+  width: 572px;
+}
 #canvas{
 	width:100vh;
 }

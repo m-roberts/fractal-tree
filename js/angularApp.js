@@ -39,7 +39,8 @@ module.factory('colorpicker', function() {
  */
 
 module.controller('fractalTreeCtrl', function($scope, $log, colorpicker) {
-
+	$scope.showControls = true;
+	
 	function refreshSwatch(ev, ui) {
 		var red = $scope.colorpicker.red,
 				green = $scope.colorpicker.green,
