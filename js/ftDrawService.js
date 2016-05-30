@@ -29,6 +29,7 @@ module.service("ftDrawService", function($window, colorpicker) {
 		background: "rgb(0,0,0)",
 		tree: "rgb(255,140,60)"
 	};
+
 	var design = {
 		depth: 6,
 		noOfTrees: 6,
@@ -68,8 +69,6 @@ module.service("ftDrawService", function($window, colorpicker) {
 		ftDrawService.setBgColours();
 		ftDrawService.setTreeColours();
 		// ftDrawService.setDesign();
-
-		ftDrawService.updateCanvas();
 	}
 
 	setCanvasSize = function() {
@@ -77,63 +76,46 @@ module.service("ftDrawService", function($window, colorpicker) {
 		ctx.canvas.width = $window.innerWidth;
 	}
 
-	ftDrawService.updateCanvas = function() {
-		drawBackground();
-		drawTrees();
-		// writeSettings();
-	}
-
 	ftDrawService.setBgColours = function(r, g, b) {
 		// Get colours from sliders
 		// Assign to background colour variable
-	   colours.background = "rgb(" + r + "," + g + "," + b + ")";
+		colours.background = "rgb(" + r + "," + g + "," + b + ")";
+		updateCanvas();
 	}
 
 	ftDrawService.setTreeColours = function(r, g, b) {
 		// Get colours from sliders
 		// Assign to background colour variable
 	   colours.tree = "rgb(" + r + "," + g + "," + b + ")";
+	   updateCanvas();
 	}
 
-	function setSeedPoints() {
-		// seedPoints = {
-		// 	// Sets position on screen to start drawing tree
-		// 	tree: {
-		// 		// Start in the middle of the screen
-		// 		x: window.innerWidth/2,
-		// 		y: window.innerHeight/2
-		// 	},
-		// 	// Sets position on screen to display text from
-		// 	text: {
-		// 		x: 10,
-		// 		y: 20,
-		// 		offset: 15
-		// 	}
-		// }
+	updateCanvas = function() {
+		drawBackground();
+		drawTrees();
 	}
 
-	function setDesign() {
-	// 	design = {
-	// 		// Number of iterations
-	// 		depth: $('#iterations-slider').slider("value"),
-	// 		// depth: 9,
-	// 		// Set number of trees to draw
-	// 		noOfTrees: $('#noOfTrees-slider').slider("value"),
-	// 		// noOfTrees: 7,
-	// 		// Angle by which each root rotates from its preceding fork
-	// 		rotationPerIteration: $('#rotationPerIteration-slider').slider("value"),
-	// 		// rotationPerIteration: 20,
-	// 		branchIterationScaling: $('#branchIterationScaling-slider').slider("value"),
-	// 		// Starting position (+/-0 = top, +90/-270 = right, +/-180 = down, +270/-90 = left)
-	// 		startingAngle: $('#startingAngle-slider').slider("value"),
-	// 		// startingAngle: 0
+	ftDrawService.setDesign = function(iterations, noOfTrees, rotationPerIteration, branchIterationScaling, newZoom, lineWidth, startingAngle) {
+		design = {
+			// Number of iterations
+			depth: iterations,
+			// Set number of trees to draw
+			noOfTrees: noOfTrees,
+			// Angle by which each root rotates from its preceding fork
+			rotationPerIteration: rotationPerIteration,
+			// rotationPerIteration: 20,
+			branchIterationScaling: branchIterationScaling,
+			// Starting position (+/-0 = top, +90/-270 = right, +/-180 = down, +270/-90 = left)
+			startingAngle: startingAngle
+		};
+		// Scales size of tree in canvas
+		zoom = newZoom;
+		
+		// Line thickness
+		// Can this be made a function of the generation currently being drawn?
+		ctx.lineWidth = lineWidth;
 
-	// 	};
-	// 	// Scales size of tree in canvas
-	// 	zoom = $('#zoom-slider').slider("value");
-	// 	// Line thickness
-	// 	// Can this be made a function of the generation currently being drawn?
-	// 	ctx.lineWidth = $('#lineWidth-slider').slider("value");
+		updateCanvas();
 	}
 
 	function drawBackground(){
@@ -183,6 +165,8 @@ module.service("ftDrawService", function($window, colorpicker) {
 	// 	$("#startingAngle").text(design.startingAngle);
 	// 	$("#colourTree").text(colours.tree.toString());
 	// 	$("#colourBackground").text(colours.background.toString());
+	// 	
+	// 	updateCanvas();
 	}
 
 	return ftDrawService;

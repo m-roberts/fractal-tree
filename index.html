@@ -1,7 +1,7 @@
 <!doctype html>
 <html ng-app="fractalTree">
 	<head>
-		<link rel="stylesheet" href="css/bootstrap.css">
+		<!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
         <link rel="stylesheet" href="css/jquery-ui.css">
 		<link href="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="node_modules/angular-ui-slider/demo/css/slider.css">
@@ -29,6 +29,17 @@
 			<div id="tree_red" ui-slider="tree_colorpicker.options" ng-model="tree_colorpicker.red"></div>
 			<div id="tree_green" ui-slider="tree_colorpicker.options" ng-model="tree_colorpicker.green"></div>
 			<div id="tree_blue" ui-slider="tree_colorpicker.options" ng-model="tree_colorpicker.blue"></div>
+		</div>
+
+		<!-- NOT YET IMPLEMENTED -->
+		<div id="design_sliders">
+			<div id="iterations" ui-slider="design.iterationOptions" ng-model="design.iterations"></div>
+			<div id="noOfTrees" ui-slider="design.noOfTreesOptions" ng-model="design.noOfTrees"></div>
+			<div id="rotationPerIteration" ui-slider="design.rotationPerIterationOptions" ng-model="design.rotationPerIteration"></div>
+			<div id="branchIterationScaling" ui-slider="design.branchIterationScalingOptions" ng-model="design.branchIterationScaling"></div>
+			<div id="zoom" ui-slider="design.zoomOptions" ng-model="design.zoom"></div>
+			<div id="lineWidth" ui-slider="design.lineWidthOptions" ng-model="design.lineWidth"></div>
+			<div id="startingAngle" ui-slider="design.startingAngleOptions" ng-model="design.startingAngle"></div>
 		</div>
 		<ft-canvas></ft-canvas>
 	</body>

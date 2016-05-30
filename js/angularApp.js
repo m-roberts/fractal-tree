@@ -25,7 +25,6 @@ module.controller('fractalTreeCtrl', function($scope, $log, ftDrawService) {
 		
 		// Update the actual swatch with the values from RGB
 		ftDrawService.setBgColours(red, green, blue);
-		ftDrawService.updateCanvas();
 	}
 
 	function setTreeColour(ev, ui) {
@@ -36,7 +35,20 @@ module.controller('fractalTreeCtrl', function($scope, $log, ftDrawService) {
 		
 		// Update the actual swatch with the values from RGB
 		ftDrawService.setTreeColours(red, green, blue);
-		ftDrawService.updateCanvas();
+	}
+
+	function setDesign(ev, ui) {
+		// Get design values
+		var iterations = $scope.design.iterations,
+			noOfTrees = $scope.design.noOfTrees,
+			rotationPerIteration = $scope.design.rotationPerIteration,
+			branchIterationScaling = $scope.design.branchIterationScaling,
+			zoom = $scope.design.zoom,
+			lineWidth = $scope.design.lineWidth,
+			startingAngle = $scope.design.startingAngle;
+		
+		// Update the actual swatch with the values from RGB
+		ftDrawService.setDesign(iterations, noOfTrees, rotationPerIteration, branchIterationScaling, zoom, lineWidth, startingAngle);
 	}
 
 	// Slider options with event handlers
@@ -78,4 +90,37 @@ module.controller('fractalTreeCtrl', function($scope, $log, ftDrawService) {
 			slide: setTreeColour
 		}
 	};
+
+	var defaultOptions = {
+		orientation: 'horizontal',
+		min: 0,
+		range: 'min',
+		change: setDesign,
+		slide: setDesign
+	}
+
+	$scope.design = {
+		iterations: 6,
+		noOfTrees: 6,
+		rotationPerIteration: 60,
+		branchIterationScaling: 50,
+		zoom: 100,
+		lineWidth: 1,
+		startingAngle: 0,
+		iterationOptions: defaultOptions,
+		noOfTreesOptions: defaultOptions,
+		rotationPerIterationOptions: defaultOptions,
+		branchIterationScalingOptions: defaultOptions,
+		zoomOptions: defaultOptions,
+		lineWidthOptions: defaultOptions,
+		startingAngleOptions: defaultOptions
+	};
+
+	$scope.design.iterationOptions.max = 15;
+	$scope.design.noOfTreesOptions.max = 8;
+	$scope.design.rotationPerIterationOptions.max = 180;
+	$scope.design.branchIterationScalingOptions.max = 100;
+	$scope.design.zoomOptions.max = 100;
+	$scope.design.lineWidthOptions.max = 5;
+	$scope.design.startingAngleOptions.max = 360;
 });
