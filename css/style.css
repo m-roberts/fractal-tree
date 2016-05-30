@@ -5,6 +5,7 @@ html, body {
 	padding: 0px;
 }
 
+<<<<<<< HEAD
 /* From UI slider demo */
 
 #red .ui-slider-range { background: #ef2929; }
@@ -39,3 +40,24 @@ html, body {
 #canvas{
 	width:100vh;
 }
+=======
+#myCanvas {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+
+#bg_red .ui-slider-range { background: #ef2929; }
+#bg_red .ui-slider-handle { border-color: #ef2929; }
+#bg_green .ui-slider-range { background: #8ae234; }
+#bg_green .ui-slider-handle { border-color: #8ae234; }
+#bg_blue .ui-slider-range { background: #729fcf; }
+#bg_blue .ui-slider-handle { border-color: #729fcf; }
+
+#tree_red .ui-slider-range { background: #ef2929; }
+#tree_red .ui-slider-handle { border-color: #ef2929; }
+#tree_green .ui-slider-range { background: #8ae234; }
+#tree_green .ui-slider-handle { border-color: #8ae234; }
+#tree_blue .ui-slider-range { background: #729fcf; }
+#tree_blue .ui-slider-handle { border-color: #729fcf; }
+>>>>>>> 4e19d5f324bb4102744659bb86818949e391e7b2

@@ -1,7 +1,7 @@
 <!doctype html>
 <html ng-app="fractalTree">
 	<head>
-		<link rel="stylesheet" href="css/bootstrap.css">
+		<!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
         <link rel="stylesheet" href="css/jquery-ui.css">
 		<link href="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="node_modules/angular-ui-slider/demo/css/slider.css">
@@ -22,6 +22,7 @@
 		<script src="js/ftDrawService.js"></script>
 	</head>
 	<body ng-controller="fractalTreeCtrl" class="container">
+
 		
 		<header class="mdl-layout__header mdl-layout__header--transparent" style="background-color:#BDBDBD">
 	    <div class="mdl-layout__header-row">
@@ -45,20 +46,20 @@
 		  <div class="mdl-grid">
 
 			<div class="mdl-cell mdl-cell--4-col">
-				<div id="red" ui-slider="colorpicker.options" ng-model="colorpicker.red" style ="display:none;"></div>
-					Red: <input ng-model="colorpicker.red" class="mdl-slider mdl-js-slider" type="range"
+				<div id="red" ui-slider="tree_colorpicker.options" ng-model="tree_colorpicker.red" style ="display:none;"></div>
+					Red: <input ng-model="tree_colorpicker.red" class="mdl-slider mdl-js-slider" type="range"
 							min="0" max="100" value="0" tabindex="0">
 			</div>
 
 		  	<div class="mdl-cell mdl-cell--4-col">
-				<div id="green" ui-slider="colorpicker.options" ng-model="colorpicker.green" style ="display:none;"></div>
-					Green: <input ng-model="colorpicker.green" class="mdl-slider mdl-js-slider" type="range"
+				<div id="green" ui-slider="tree_colorpicker.options" ng-model="tree_colorpicker.green" style ="display:none;"></div>
+					Green: <input ng-model="tree_colorpicker.green" class="mdl-slider mdl-js-slider" type="range"
 			 		 	min="0" max="100" value="0" tabindex="0">
 		  	</div>
 
 		  	<div class="mdl-cell mdl-cell--4-col">
-		  		<div id="blue" ui-slider="colorpicker.options" ng-model="colorpicker.blue" style ="display:none;"></div>
-					Blue: <input ng-model="colorpicker.blue" class="mdl-slider mdl-js-slider" type="range"
+		  		<div id="blue" ui-slider="tree_colorpicker.options" ng-model="tree_colorpicker.blue" style ="display:none;"></div>
+					Blue: <input ng-model="tree_colorpicker.blue" class="mdl-slider mdl-js-slider" type="range"
 			  		min="0" max="100" value="0" tabindex="0">
 		  	</div>
 
@@ -66,14 +67,14 @@
 		 
 		</div>
 		<br>
-		<div id="swatch" class="card-square mdl-card mdl-shadow--2dp center-block"  style="margin-left:13vh;">
+		<!-- <div id="swatch" class="card-square mdl-card mdl-shadow--2dp center-block"  style="margin-left:13vh;">
 		  <div class="mdl-card__title mdl-card--expand">
 		    <h2 class="mdl-card__title-text">Preview</h2>
 		  </div>
 		  <div class="mdl-card__supporting-text">
 		    Drag the sliders above to update the swatch!
 		  </div>
-		 </div>
+		 </div> -->
 		 <br>
 
 		 <button ng-click="showControls = false" ng-show="showControls" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="margin-left:22vh;">
@@ -98,5 +99,6 @@
 
 	 	
 		
+
 	</body>
 </html>
