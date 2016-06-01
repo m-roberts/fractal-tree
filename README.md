@@ -52,6 +52,8 @@ v0.1.0
   - Add save and load functionality (use database for JSON variables? Encode them into GET var in URL? http://stackoverflow.com/questions/16686121/javascript-save-way-to-read-get-without-php)
 
   **Meta**
+  - Port over to Angular2 when instructions are available for Javascript
+  - Port over from Material Design Lite to Polymer when Angular2 migration is possible
   - Separate functions and default variable values by file; give JS files better names
   - Establish computational limits to prevent variables from being too large as to break
   - Better commenting
