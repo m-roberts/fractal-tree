@@ -5,7 +5,6 @@ html, body {
 	padding: 0px;
 }
 
-<<<<<<< HEAD
 /* From UI slider demo */
 
 #red .ui-slider-range { background: #ef2929; }
@@ -37,15 +36,25 @@ html, body {
 .card-large.mdl-card {
   width: 572px;
 }
-#canvas{
-	width:100vh;
-}
-=======
+
 #myCanvas {
 	position: absolute;
-	height: 100%;
-	width: 100%;
+	/*height: 100%;*/
+	/*width: 100%;*/
+	height:100vw;
+	width:100vh;
 }
+
+#controls_column {
+	position: absolute;
+	top: 48px;
+	left: 50vh;
+}
+
+/*#controls_window {
+	position: absolute;
+	top: 0px;
+}*/
 
 #bg_red .ui-slider-range { background: #ef2929; }
 #bg_red .ui-slider-handle { border-color: #ef2929; }
@@ -60,4 +69,3 @@ html, body {
 #tree_green .ui-slider-handle { border-color: #8ae234; }
 #tree_blue .ui-slider-range { background: #729fcf; }
 #tree_blue .ui-slider-handle { border-color: #729fcf; }
->>>>>>> 4e19d5f324bb4102744659bb86818949e391e7b2

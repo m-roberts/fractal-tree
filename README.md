@@ -5,13 +5,16 @@ Javascript implementation of a repeating fractal tree design for fun
 ![Example design](http://i.imgur.com/9ZSK97P.png "Example design")
 
 ### Version
-0.1.4
+0.2.0-pre1
 
 ### Running Online
 It is possible to run the web application directly from the repo:
 m-roberts.github.io/fractal-tree
 
 ### Changelog
+
+v0.2.0-pre1
+  - Migrated to Angular
 
 v0.1.4
   - Added JQuery inputs to change most variables in real-time without page reload
@@ -37,7 +40,6 @@ v0.1.0
 
 ### TODO
   **Functionality**
-  - Implement with Angular (will fix lag) (Note: conflicts with Jekyll [can this be suppressed in just this app?] http://alwayscoding.ca/momentos/2013/10/09/angular-and-liquid-expressions-in-jekyll/)
   - Settings need colour control
   - Add mobile support
   - Add invert option for relative scaling (i.e. gets longer each branch -> '1 - 1/depth')
