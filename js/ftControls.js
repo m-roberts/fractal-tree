@@ -1,9 +1,23 @@
-module.directive('inputControlsDirective', function() {
+angular
+.module('fractalTree')
+.directive('ftControls', function() {
+	var inputsController = ['$scope', '$rootScope', function ($scope, $rootScope ) {
+
+    
+    }]
 	return {
-		template: "ftControls.html"
+		restrict: 'E',
+		templateUrl: '../ftControls.html',
+		controller: inputsController
 	};
-})
-.controller('inputControlsController', function($window) {
-	var controlsColumnLeft = window.innerWidth/2;
-	angular.element('#controls_column').css('left', controlsColumnLeft);
 });
+
+// // Used in the HTML to enable use of `<ft-canvas></ft-canvas>`
+// module.directive('ftControls', function() {
+//   return {
+// 	restrict: 'E',
+// 	// replace: true,
+// 	// scope: true,
+// 	template: '<canvas id="myCanvas"></canvas>'
+//   };
+// })
