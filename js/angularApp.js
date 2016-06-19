@@ -1,11 +1,13 @@
 // Belongs to the whole web app
 module = angular.module("fractalTree", ['ui.bootstrap', 'ngMaterial']);
-module.config(function(){
+module.config(function($mdThemingProvider){
 	// Allow use of  {( myVariable )} for Angular expressions and avoid conflict with Liquid (included with Jekyll for Github Pages) tags
 	// http://alwayscoding.ca/momentos/2013/10/09/angular-and-liquid-expressions-in-jekyll/
 	'$interpolateProvider', function($interpolateProvider) {
 		return $interpolateProvider.startSymbol('{(').endSymbol(')}');
 	}
+
+  $mdThemingProvider.theme('default').dark();
 });
 
 module.run(function(){

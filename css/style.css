@@ -41,3 +41,7 @@ html, body {
 md-sidenav.md-locked-open.fixed-pos {
   position: fixed !important;
 }
+
+.sidenav-contents {
+  padding: 25px;
+}

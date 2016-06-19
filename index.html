@@ -22,19 +22,26 @@
 	<body ng-controller="fractalTreeCtrl" class="container">
 		<md-sidenav class="md-sidenav-left fixed-pos" md-is-locked-open="true">
 			<md-toolbar class="md-theme-indigo">
-        <h1 class="md-toolbar-tools">Sidenav Left</h1>
+				<h1 class="md-toolbar-tools">Background Colors</h1>
       </md-toolbar>
-			<md-slider-container>
-				<md-slider class="red-slider" ng-model="bg_colorpicker.red" min="0" max="255" aria-label="BG Red"></md-slider>
-				<md-slider  class="green-slider" ng-model="bg_colorpicker.green" min="0" max="255" aria-label="BG Green"></md-slider>
-				<md-slider  class="blue-slider" ng-model="bg_colorpicker.blue" min="0" max="255" aria-label="BG Blue"></md-slider>
-			</md-slider-container>
+			<div class="sidenav-contents">
+				<md-slider-container>
+					<md-slider class="red-slider" ng-model="bg_colorpicker.red" min="0" max="255" aria-label="BG Red"></md-slider>
+					<md-slider  class="green-slider" ng-model="bg_colorpicker.green" min="0" max="255" aria-label="BG Green"></md-slider>
+					<md-slider  class="blue-slider" ng-model="bg_colorpicker.blue" min="0" max="255" aria-label="BG Blue"></md-slider>
+				</md-slider-container>
+		</div>
 
-			<md-slider-container>
-				<md-slider class="red-slider" ng-model="tree_colorpicker.red" min="0" max="255" aria-label="FG Red"></md-slider>
-				<md-slider  class="green-slider" ng-model="tree_colorpicker.green" min="0" max="255" aria-label="FG Green"></md-slider>
-				<md-slider  class="blue-slider" ng-model="tree_colorpicker.blue" min="0" max="255" aria-label="FG Blue"></md-slider>
-			</md-slider-container>
+			<md-toolbar class="md-theme-indigo">
+				<h1 class="md-toolbar-tools">Tree Colors</h1>
+			</md-toolbar>
+			<div class="sidenav-contents">
+				<md-slider-container>
+					<md-slider class="red-slider" ng-model="tree_colorpicker.red" min="0" max="255" aria-label="FG Red"></md-slider>
+					<md-slider  class="green-slider" ng-model="tree_colorpicker.green" min="0" max="255" aria-label="FG Green"></md-slider>
+					<md-slider  class="blue-slider" ng-model="tree_colorpicker.blue" min="0" max="255" aria-label="FG Blue"></md-slider>
+				</md-slider-container>
+			</div>
 		</md-sidenav>
 
 		<!-- NOT YET IMPLEMENTED -->
