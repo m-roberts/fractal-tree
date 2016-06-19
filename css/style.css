@@ -3,6 +3,8 @@ html, body {
 	height: 100%;
 	margin: 0px;
 	padding: 0px;
+	overflow-x: hidden; 
+	overflow-y: auto;
 }
 
 #ftCanvas {
@@ -12,36 +14,37 @@ html, body {
 }
 
 .red-slider .md-thumb:after, .red-slider .md-track-fill{
-  background-color: #ef2929 !important;
-  border-color: #ef2929 !important;
+	background-color: #ef2929 !important;
+	border-color: #ef2929 !important;
 }
 
 .red-slider .md-focus-thumb, .red-slider .md-focus-ring{
-  background-color: #ef2929 !important;
+	background-color: #ef2929 !important;
 }
 
 .green-slider .md-thumb:after, .green-slider .md-track-fill{
-  background-color: #8ae234 !important;
-  border-color: #8ae234 !important;
+	background-color: #8ae234 !important;
+	border-color: #8ae234 !important;
 }
 
 .green-slider .md-focus-thumb, .green-slider .md-focus-ring{
-  background-color: #8ae234 !important;
+	background-color: #8ae234 !important;
 }
 
 .blue-slider .md-thumb:after, .blue-slider .md-track-fill{
-  background-color: #729fcf !important;
-  border-color: #729fcf !important;
+	background-color: #729fcf !important;
+	border-color: #729fcf !important;
 }
 
 .blue-slider .md-focus-thumb, .blue-slider .md-focus-ring{
-  background-color: #729fcf !important;
+	background-color: #729fcf !important;
 }
 
 md-sidenav.md-locked-open.fixed-pos {
-  position: fixed !important;
+	position: fixed !important;
 }
 
 .sidenav-contents {
-  padding: 15px 25px 15px 25px;
+	padding-left: 25px;
+	padding-right: 25px;
 }

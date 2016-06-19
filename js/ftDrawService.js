@@ -1,12 +1,12 @@
 // This is used in ftCanvas.js to initialise the HTML canvas context
 module.service("ftDrawService", function($window) {
 	ftDrawService = {};
-  var seedPoints = {};
+	var seedPoints = {};
 
-  angular.element($window).on("resize", function(){
-    setCanvasSize();
-    updateCanvas();
-  });
+	angular.element($window).on("resize", function(){
+		setCanvasSize();
+		updateCanvas();
+	});
 
 	var degToRad = Math.PI / 180.0;
 
@@ -32,17 +32,27 @@ module.service("ftDrawService", function($window) {
 	// Scales size of tree in canvas
 	var zoom = 100;
 
-	ftDrawService.init = function(context) {
-		ctx = context;
-		ctx.lineWidth = 1;
+	var sidebarWidth = 0;
+
+	// Setting timeout to wait for sidebar to correctly return its width
+	setTimeout(function(){
+		sidebarWidth = angular.element(document.getElementById('sidebar')).prop('offsetWidth');
+		
 		setCanvasSize();
 		ftDrawService.setBgColours();
 		ftDrawService.setTreeColours();
+	}, 50);
+
+	// Allows the canvas context to be interacted with, now that it is available
+	ftDrawService.init = function(context) {
+		ctx = context;
+		// Got context, now provide initial line width
+		ctx.lineWidth = 1;
 	}
 
 	setCanvasSize = function() {
+		ctx.canvas.width = $window.innerWidth - sidebarWidth;
 		ctx.canvas.height = $window.innerHeight;
-		ctx.canvas.width = $window.innerWidth;
 
 		design.treeSeedPoints = {
 			x: ctx.canvas.width/2,

@@ -19,6 +19,8 @@ v0.2
 ### TODO
   **Functionality**
   - Add mobile support
+  - Add titles for sliders
+  - Add accordion to sidebar (http://angularscript.com/angularjs-multi-level-accordion-component-v-accordion/)
   - Add invert option for relative scaling (i.e. gets longer each branch -> '1 - 1/depth')
   - Improve automatic zoom with better scaling function which automatically adjusts to fit page no matter what the design (likelt requires branchIterationScaling variable)
   - Add animations (i.e. ability to automatically move slider controls) -> GIF support?
