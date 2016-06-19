@@ -9,7 +9,7 @@ module.config(function(){
 });
 
 module.run(function(){
-	
+
 });
 
 // Belongs to the body (canvas)
@@ -22,7 +22,7 @@ module.controller('fractalTreeCtrl', function($scope, $log, ftDrawService) {
 		var red = $scope.bg_colorpicker.red,
 			green = $scope.bg_colorpicker.green,
 			blue = $scope.bg_colorpicker.blue;
-		
+
 		// Update the actual swatch with the values from RGB
 		ftDrawService.setBgColours(red, green, blue);
 	}
@@ -32,7 +32,7 @@ module.controller('fractalTreeCtrl', function($scope, $log, ftDrawService) {
 		var red = $scope.tree_colorpicker.red,
 			green = $scope.tree_colorpicker.green,
 			blue = $scope.tree_colorpicker.blue;
-		
+
 		// Update the actual swatch with the values from RGB
 		ftDrawService.setTreeColours(red, green, blue);
 	}
@@ -46,7 +46,7 @@ module.controller('fractalTreeCtrl', function($scope, $log, ftDrawService) {
 			zoom = $scope.design.zoom,
 			lineWidth = $scope.design.lineWidth,
 			startingAngle = $scope.design.startingAngle;
-		
+
 		// Update the actual swatch with the values from RGB
 		ftDrawService.setDesign(iterations, noOfTrees, rotationPerIteration, branchIterationScaling, zoom, lineWidth, startingAngle);
 	}
@@ -63,32 +63,24 @@ module.controller('fractalTreeCtrl', function($scope, $log, ftDrawService) {
 		}
 	};
 
+  $scope.$watch("bg_colorpicker", function() {
+    setBgColour();
+  }, true);
+
 	$scope.bg_colorpicker = {
 		red: 0,
 		green: 0,
-		blue: 0,
-		options: {
-			orientation: 'horizontal',
-			min: 0,
-			max: 255,
-			range: 'min',
-			change: setBgColour,
-			slide: setBgColour
-		}
+		blue: 0
 	};
+
+  $scope.$watch("tree_colorpicker", function() {
+    setTreeColour();
+  }, true);
 
 	$scope.tree_colorpicker = {
 		red: 255,
 		green: 140,
-		blue: 60,
-		options: {
-			orientation: 'horizontal',
-			min: 0,
-			max: 255,
-			range: 'min',
-			change: setTreeColour,
-			slide: setTreeColour
-		}
+		blue: 60
 	};
 
 	var defaultOptions = {

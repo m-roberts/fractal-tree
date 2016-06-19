@@ -24,28 +24,34 @@
 		<script src="js/ftDrawService.js"></script>
 	</head>
 	<body ng-controller="fractalTreeCtrl" class="container">
-		<div id="bg_rgb_sliders">
-			<div id="bg_red" ui-slider="bg_colorpicker.options" ng-model="bg_colorpicker.red"></div>
-			<div id="bg_green" ui-slider="bg_colorpicker.options" ng-model="bg_colorpicker.green"></div>
-			<div id="bg_blue" ui-slider="bg_colorpicker.options" ng-model="bg_colorpicker.blue"></div>
-		</div>
+		<md-slider-container>
+			<md-slider class="red-slider" ng-model="bg_colorpicker.red" min="0" max="255"></md-slider>
+			<md-slider  class="green-slider" ng-model="bg_colorpicker.green" min="0" max="255"></md-slider>
+			<md-slider  class="blue-slider" ng-model="bg_colorpicker.blue" min="0" max="255"></md-slider>
+		</md-slider-container>
 
-		<div id="tree_rgb_sliders">
-			<div id="tree_red" ui-slider="tree_colorpicker.options" ng-model="tree_colorpicker.red"></div>
-			<div id="tree_green" ui-slider="tree_colorpicker.options" ng-model="tree_colorpicker.green"></div>
-			<div id="tree_blue" ui-slider="tree_colorpicker.options" ng-model="tree_colorpicker.blue"></div>
-		</div>
+	<md-slider-container>
+		<md-slider class="red-slider" ng-model="tree_colorpicker.red" min="0" max="255"></md-slider>
+		<md-slider  class="green-slider" ng-model="tree_colorpicker.green" min="0" max="255"></md-slider>
+		<md-slider  class="blue-slider" ng-model="tree_colorpicker.blue" min="0" max="255"></md-slider>
+	</md-slider-container>
+		<!-- <div id="tree_rgb_sliders"> -->
+			<!-- <div id="tree_red" ui-slider="tree_colorpicker.options" ng-model="tree_colorpicker.red"></div> -->
+			<!-- <div id="tree_green" ui-slider="tree_colorpicker.options" ng-model="tree_colorpicker.green"></div> -->
+			<!-- <div id="tree_blue" ui-slider="tree_colorpicker.options" ng-model="tree_colorpicker.blue"></div> -->
+		<!-- </div> -->
 
 		<!-- NOT YET IMPLEMENTED -->
-		<div id="design_sliders">
-			<div id="iterations" ui-slider="design.iterationOptions" ng-model="design.iterations"></div>
-			<div id="noOfTrees" ui-slider="design.noOfTreesOptions" ng-model="design.noOfTrees"></div>
-			<div id="rotationPerIteration" ui-slider="design.rotationPerIterationOptions" ng-model="design.rotationPerIteration"></div>
-			<div id="branchIterationScaling" ui-slider="design.branchIterationScalingOptions" ng-model="design.branchIterationScaling"></div>
-			<div id="zoom" ui-slider="design.zoomOptions" ng-model="design.zoom"></div>
-			<div id="lineWidth" ui-slider="design.lineWidthOptions" ng-model="design.lineWidth"></div>
-			<div id="startingAngle" ui-slider="design.startingAngleOptions" ng-model="design.startingAngle"></div>
-		</div>
+		<!-- <div id="design_sliders"> -->
+			<!-- <div id="iterations" ui-slider="design.iterationOptions" ng-model="design.iterations"></div> -->
+			<!-- <div id="noOfTrees" ui-slider="design.noOfTreesOptions" ng-model="design.noOfTrees"></div> -->
+			<!-- <div id="rotationPerIteration" ui-slider="design.rotationPerIterationOptions" ng-model="design.rotationPerIteration"></div> -->
+			<!-- <div id="branchIterationScaling" ui-slider="design.branchIterationScalingOptions" ng-model="design.branchIterationScaling"></div> -->
+			<!-- <div id="zoom" ui-slider="design.zoomOptions" ng-model="design.zoom"></div> -->
+			<!-- <div id="lineWidth" ui-slider="design.lineWidthOptions" ng-model="design.lineWidth"></div> -->
+			<!-- <div id="startingAngle" ui-slider="design.startingAngleOptions" ng-model="design.startingAngle"></div> -->
+		<!-- </div> -->
+
 		<ft-canvas></ft-canvas>
 	</body>
 </html>
