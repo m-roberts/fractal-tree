@@ -21,6 +21,12 @@ module.factory('colorpicker', function() {
 // This is used in ftCanvas.js to initialise the HTML canvas context
 module.service("ftDrawService", function($window, colorpicker) {
 	ftDrawService = {};
+  var seedPoints = {};
+
+  angular.element($window).on("resize", function(){
+    setCanvasSize();
+    updateCanvas();
+  });
 
 	var degToRad = Math.PI / 180.0;
 
@@ -74,6 +80,13 @@ module.service("ftDrawService", function($window, colorpicker) {
 	setCanvasSize = function() {
 		ctx.canvas.height = $window.innerHeight;
 		ctx.canvas.width = $window.innerWidth;
+
+    seedPoints = {
+      tree: {
+        x: ctx.canvas.width/2,
+        y: ctx.canvas.height/2
+      }
+    };
 	}
 
 	ftDrawService.setBgColours = function(r, g, b) {
@@ -110,7 +123,7 @@ module.service("ftDrawService", function($window, colorpicker) {
 		};
 		// Scales size of tree in canvas
 		zoom = newZoom;
-		
+
 		// Line thickness
 		// Can this be made a function of the generation currently being drawn?
 		ctx.lineWidth = lineWidth;
@@ -141,7 +154,7 @@ module.service("ftDrawService", function($window, colorpicker) {
 			drawTree(x2, y2, angle + design.rotationPerIteration, depth - 1);
 		}
 	}
-	
+
 	function drawTrees(){
 		// Draw tree
 		ctx.beginPath();
@@ -165,7 +178,7 @@ module.service("ftDrawService", function($window, colorpicker) {
 	// 	$("#startingAngle").text(design.startingAngle);
 	// 	$("#colourTree").text(colours.tree.toString());
 	// 	$("#colourBackground").text(colours.background.toString());
-	// 	
+	//
 	// 	updateCanvas();
 	}
 

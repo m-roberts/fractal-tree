@@ -1,0 +1,24 @@
+{
+  "name": "fractal-tree",
+  "version": "1.0.0",
+  "description": "Fractal tree web app",
+  "main": "index.js",
+  "dependencies": {
+    "angular": "^1.5.7",
+    "angular-animate": "^1.5.7",
+    "angular-aria": "^1.5.7",
+    "angular-material": "^1.0.9",
+    "angular-ui-bootstrap": "^1.2.4",
+    "material-design-icons": "^2.2.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/M-Roberts/fractal-tree.git"
+  },
+  "author": "Mike Roberts",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/M-Roberts/fractal-tree/issues"
+  },
+  "homepage": "https://github.com/M-Roberts/fractal-tree#readme"
+}
