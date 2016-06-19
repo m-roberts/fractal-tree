@@ -85,13 +85,9 @@ module.controller('fractalTreeCtrl', function($scope, $log, ftDrawService) {
 		blue: 60
 	};
 
-	var defaultOptions = {
-		orientation: 'horizontal',
-		min: 0,
-		range: 'min',
-		change: setDesign,
-		slide: setDesign
-	}
+  $scope.$watch("design", function() {
+    setDesign();
+  }, true);
 
 	$scope.design = {
 		iterations: 6,
@@ -100,21 +96,7 @@ module.controller('fractalTreeCtrl', function($scope, $log, ftDrawService) {
 		branchIterationScaling: 50,
 		zoom: 100,
 		lineWidth: 1,
-		startingAngle: 0,
-		iterationOptions: defaultOptions,
-		noOfTreesOptions: defaultOptions,
-		rotationPerIterationOptions: defaultOptions,
-		branchIterationScalingOptions: defaultOptions,
-		zoomOptions: defaultOptions,
-		lineWidthOptions: defaultOptions,
-		startingAngleOptions: defaultOptions
+		startingAngle: 0
 	};
 
-	$scope.design.iterationOptions.max = 15;
-	$scope.design.noOfTreesOptions.max = 8;
-	$scope.design.rotationPerIterationOptions.max = 180;
-	$scope.design.branchIterationScalingOptions.max = 100;
-	$scope.design.zoomOptions.max = 100;
-	$scope.design.lineWidthOptions.max = 5;
-	$scope.design.startingAngleOptions.max = 360;
 });

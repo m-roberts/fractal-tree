@@ -42,18 +42,22 @@
 					<md-slider  class="blue-slider" ng-model="tree_colorpicker.blue" min="0" max="255" aria-label="FG Blue"></md-slider>
 				</md-slider-container>
 			</div>
-		</md-sidenav>
 
-		<!-- NOT YET IMPLEMENTED -->
-		<!-- <div id="design_sliders"> -->
-			<!-- <div id="iterations" ui-slider="design.iterationOptions" ng-model="design.iterations"></div> -->
-			<!-- <div id="noOfTrees" ui-slider="design.noOfTreesOptions" ng-model="design.noOfTrees"></div> -->
-			<!-- <div id="rotationPerIteration" ui-slider="design.rotationPerIterationOptions" ng-model="design.rotationPerIteration"></div> -->
-			<!-- <div id="branchIterationScaling" ui-slider="design.branchIterationScalingOptions" ng-model="design.branchIterationScaling"></div> -->
-			<!-- <div id="zoom" ui-slider="design.zoomOptions" ng-model="design.zoom"></div> -->
-			<!-- <div id="lineWidth" ui-slider="design.lineWidthOptions" ng-model="design.lineWidth"></div> -->
-			<!-- <div id="startingAngle" ui-slider="design.startingAngleOptions" ng-model="design.startingAngle"></div> -->
-		<!-- </div> -->
+			<md-toolbar class="md-theme-indigo">
+				<h1 class="md-toolbar-tools">Design Parameters</h1>
+			</md-toolbar>
+			<div class="sidenav-contents">
+				<md-slider-container>
+					<md-slider class="" ng-model="design.iterations" min="0" max="15" aria-label="Iterations"></md-slider>
+					<md-slider  class="" ng-model="design.noOfTrees" min="0" max="8" aria-label="Number of trees"></md-slider>
+					<md-slider  class="" ng-model="design.rotationPerIteration" min="0" max="180" aria-label="Rotation per iteration"></md-slider>
+					<md-slider  class="" ng-model="design.branchIterationScaling" min="0" max="100" aria-label="Branch iteration scaling"></md-slider>
+					<md-slider  class="" ng-model="design.zoom" min="0" max="100" aria-label="Zoom"></md-slider>
+					<md-slider  class="" ng-model="design.lineWidth" min="0" max="5" aria-label="Line width"></md-slider>
+					<md-slider  class="" ng-model="design.startingAngle" min="0" max="360" aria-label="Starting angle"></md-slider>
+				</md-slider-container>
+			</div>
+		</md-sidenav>
 
 		<ft-canvas></ft-canvas>
 	</body>
