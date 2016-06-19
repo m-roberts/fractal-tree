@@ -11,7 +11,7 @@ html, body {
 	width: 100%;
 }
 
-.red-slider .md-thumb:after, .red-slider .md-track{
+.red-slider .md-thumb:after, .red-slider .md-track-fill{
   background-color: #ef2929 !important;
   border-color: #ef2929 !important;
 }
@@ -20,7 +20,7 @@ html, body {
   background-color: #ef2929 !important;
 }
 
-.green-slider .md-thumb:after, .green-slider .md-track{
+.green-slider .md-thumb:after, .green-slider .md-track-fill{
   background-color: #8ae234 !important;
   border-color: #8ae234 !important;
 }
@@ -29,7 +29,7 @@ html, body {
   background-color: #8ae234 !important;
 }
 
-.blue-slider .md-thumb:after, .blue-slider .md-track{
+.blue-slider .md-thumb:after, .blue-slider .md-track-fill{
   background-color: #729fcf !important;
   border-color: #729fcf !important;
 }
