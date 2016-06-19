@@ -51,3 +51,7 @@ html, body {
 .blue-slider .md-focus-thumb, .blue-slider .md-focus-ring{
   background-color: #729fcf !important;
 }
+
+md-sidenav.md-locked-open.fixed-pos {
+  position: fixed !important;
+}
