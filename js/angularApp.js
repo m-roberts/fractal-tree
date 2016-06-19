@@ -1,5 +1,5 @@
 // Belongs to the whole web app
-module = angular.module("fractalTree", ['ui.bootstrap', 'ui.slider']);
+module = angular.module("fractalTree", ['ui.bootstrap', 'ui.slider', 'ngMaterial']);
 module.config(function(){
 	// Allow use of  {( myVariable )} for Angular expressions and avoid conflict with Liquid (included with Jekyll for Github Pages) tags
 	// http://alwayscoding.ca/momentos/2013/10/09/angular-and-liquid-expressions-in-jekyll/
