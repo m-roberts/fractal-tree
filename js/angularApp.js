@@ -15,9 +15,23 @@ module.run(function(){
 });
 
 // Belongs to the body (canvas)
-// This includes the colorpicker factory
-// module.controller('fractalTreeCtrl', function($scope, $log, colorpicker) {
-module.controller('fractalTreeCtrl', function($scope, $log, ftDrawService) {
+module.controller('fractalTreeCtrl', function($scope, $mdSidenav, $log, ftDrawService) {
+	/////////////
+	// Sidebar //
+	/////////////
+	$scope.toggleSidenav = function() {
+		$mdSidenav('sidebar')
+		.toggle()
+		// .then(function () {
+		// 	$log.debug("toggle " + navID + " is done");
+		// }
+	}
+
+	$scope.isSidenavOpen = function(){
+		return $mdSidenav('sidebar').isOpen();
+	};
+
+
 	////////////////
 	// Background //
 	////////////////
@@ -92,5 +106,13 @@ module.controller('fractalTreeCtrl', function($scope, $log, ftDrawService) {
 		zoom: 100,
 		lineWidth: 1,
 		startingAngle: 0
+	};
+}).controller('sidenavCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+	$scope.close = function () {
+		// Component lookup should always be available since we are not using `ng-if`
+		$mdSidenav('sidebar').close()
+		// .then(function () {
+		// 	$log.debug("close RIGHT is done");
+		// });
 	};
 });

@@ -19,47 +19,59 @@
 		<script src="js/ftCanvas.js"></script>
 		<script src="js/ftDrawService.js"></script>
 	</head>
+	
 	<body ng-controller="fractalTreeCtrl" class="container">
+		<md-button class="md-fab" aria-label="Menu" ng-click="toggleSidenav()" ng-hide="isSidenavOpen()"
+		style="position: absolute">
+            <md-icon>dehaze</md-icon>
+        </md-button>
 		<!-- SIDE BAR -->
-		<md-sidenav id="sidebar" class="md-sidenav-left fixed-pos" md-is-locked-open="true">
-			<!-- BACKGROUND COLOURS -->
-			<md-toolbar class="md-theme-indigo">
-				<h1 class="md-toolbar-tools">Background Colours</h1>
-			</md-toolbar>
-			<div class="sidenav-contents">
-				<md-slider-container>
-					<md-slider class="red-slider" ng-model="bg_colorpicker.red" min="0" max="255" aria-label="BG Red"></md-slider>
-					<md-slider class="green-slider" ng-model="bg_colorpicker.green" min="0" max="255" aria-label="BG Green"></md-slider>
-					<md-slider class="blue-slider" ng-model="bg_colorpicker.blue" min="0" max="255" aria-label="BG Blue"></md-slider>
-				</md-slider-container>
-			</div>
+		<!-- <md-sidenav id="sidebar" class="md-sidenav-left fixed-pos" md-is-locked-open="true"> -->
+		<md-sidenav class="md-sidenav-left" md-component-id="sidebar">
+			<div ng-controller="sidenavCtrl">
+				<!-- CLOSE BUTTON -->
+				<md-button class="md-fab" aria-label="Menu" ng-click="close()">
+					<md-icon>forward</md-icon>
+				</md-button>
+				<!-- BACKGROUND COLOURS -->
+				<md-toolbar class="md-theme-indigo">
+					<h1 class="md-toolbar-tools">Background Colours</h1>
+				</md-toolbar>
+				<div class="sidenav-contents">
+					<md-slider-container>
+						<md-slider class="red-slider" ng-model="bg_colorpicker.red" min="0" max="255" aria-label="BG Red"></md-slider>
+						<md-slider class="green-slider" ng-model="bg_colorpicker.green" min="0" max="255" aria-label="BG Green"></md-slider>
+						<md-slider class="blue-slider" ng-model="bg_colorpicker.blue" min="0" max="255" aria-label="BG Blue"></md-slider>
+					</md-slider-container>
+				</div>
 
-			<!-- TREE COLOURS -->
-			<md-toolbar class="md-theme-indigo">
-				<h1 class="md-toolbar-tools">Tree Colours</h1>
-			</md-toolbar>
-			<div class="sidenav-contents">
-				<md-slider-container>
-					<md-slider class="red-slider" ng-model="tree_colorpicker.red" min="0" max="255" aria-label="FG Red"></md-slider>
-					<md-slider class="green-slider" ng-model="tree_colorpicker.green" min="0" max="255" aria-label="FG Green"></md-slider>
-					<md-slider class="blue-slider" ng-model="tree_colorpicker.blue" min="0" max="255" aria-label="FG Blue"></md-slider>
-				</md-slider-container>
-			</div>
+				<!-- TREE COLOURS -->
+				<md-toolbar class="md-theme-indigo">
+					<h1 class="md-toolbar-tools">Tree Colours</h1>
+				</md-toolbar>
+				<div class="sidenav-contents">
+					<md-slider-container>
+						<md-slider class="red-slider" ng-model="tree_colorpicker.red" min="0" max="255" aria-label="FG Red"></md-slider>
+						<md-slider class="green-slider" ng-model="tree_colorpicker.green" min="0" max="255" aria-label="FG Green"></md-slider>
+						<md-slider class="blue-slider" ng-model="tree_colorpicker.blue" min="0" max="255" aria-label="FG Blue"></md-slider>
+					</md-slider-container>
+				</div>
 
-			<!-- DESIGN PARAMETERS -->
-			<md-toolbar class="md-theme-indigo">
-				<h1 class="md-toolbar-tools">Design Parameters</h1>
-			</md-toolbar>
-			<div class="sidenav-contents">
-				<md-slider-container>
-					<md-slider class="" ng-model="design.iterations" min="0" max="15" aria-label="Iterations"></md-slider>
-					<md-slider class="" ng-model="design.noOfTrees" min="0" max="8" aria-label="Number of trees"></md-slider>
-					<md-slider class="" ng-model="design.rotationPerIteration" min="0" max="180" aria-label="Rotation per iteration"></md-slider>
-					<md-slider class="" ng-model="design.branchIterationScaling" min="0" max="100" aria-label="Branch iteration scaling"></md-slider>
-					<md-slider class="" ng-model="design.zoom" min="0" max="100" aria-label="Zoom"></md-slider>
-					<md-slider class="" ng-model="design.lineWidth" min="0" max="5" aria-label="Line width"></md-slider>
-					<md-slider class="" ng-model="design.startingAngle" min="0" max="360" aria-label="Starting angle"></md-slider>
-				</md-slider-container>
+				<!-- DESIGN PARAMETERS -->
+				<md-toolbar class="md-theme-indigo">
+					<h1 class="md-toolbar-tools">Design Parameters</h1>
+				</md-toolbar>
+				<div class="sidenav-contents">
+					<md-slider-container>
+						<md-slider class="" ng-model="design.iterations" min="0" max="15" aria-label="Iterations"></md-slider>
+						<md-slider class="" ng-model="design.noOfTrees" min="0" max="8" aria-label="Number of trees"></md-slider>
+						<md-slider class="" ng-model="design.rotationPerIteration" min="0" max="180" aria-label="Rotation per iteration"></md-slider>
+						<md-slider class="" ng-model="design.branchIterationScaling" min="0" max="100" aria-label="Branch iteration scaling"></md-slider>
+						<md-slider class="" ng-model="design.zoom" min="0" max="100" aria-label="Zoom"></md-slider>
+						<md-slider class="" ng-model="design.lineWidth" min="0" max="5" aria-label="Line width"></md-slider>
+						<md-slider class="" ng-model="design.startingAngle" min="0" max="360" aria-label="Starting angle"></md-slider>
+					</md-slider-container>
+				</div>
 			</div>
 		</md-sidenav>
 
