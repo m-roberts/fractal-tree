@@ -6,7 +6,7 @@ module.directive('ftCanvas', function(ftDrawService) {
 	restrict: 'E',
 	replace: true,
 	scope: true,
-	template: '<canvas id="myCanvas"></canvas>',
+	template: '<canvas id="ftCanvas"></canvas>',
 	link: function(scope, element, attrs) {
 		var ctx = element[0].getContext('2d');
 		ftDrawService.init(ctx);
